@@ -1,0 +1,56 @@
+// ie yeah we trying to remember about it
+@mixin defaultFlex {
+	display: -webkit-box!important;
+	display: -moz-box!important;
+	display: -ms-flexbox!important;
+	display: -webkit-flex!important;
+	display: flex!important;
+	flex-wrap: wrap;
+}
+
+@mixin transition($properity, $length, $transition_style: cubic-bezier(0.215, 0.61, 0.355, 1)) {
+	transition: $length + s $properity + ' ' + $transition_style ;
+}
+@mixin multiple-transition(
+	$properities,
+	$length,
+	$transition_style: cubic-bezier(0.215, 0.61, 0.355, 1)
+) {
+	// init handler value to get rid of undefined error
+	// we override it anyway
+	$handler: 0;
+	$count: 0;
+	@each $val in $properities {
+		@if $count == 0 {
+			$handler: $length + s $val + " " + $transition_style;
+		} @else {
+			$handler: $handler, $length + s $val + " " + $transition_style;
+		}
+		$count: $count + 1;
+	}
+	transition: $handler;
+	z-index: $count;
+}
+
+// need to get rid of it in future
+@mixin transition__medium {
+	transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+//handle all states at once
+@mixin on-event($self: false) {
+	@if $self {
+		&,
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	} @else {
+		&:hover,
+		&:active,
+		&:focus {
+			@content;
+		}
+	}
+}

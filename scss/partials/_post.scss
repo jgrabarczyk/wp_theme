@@ -1,0 +1,19 @@
+.post-excerpt {
+	&__img {
+		flex: 0 1 300px;
+		max-width: 300px;
+  }
+  &__content{
+    padding-left:  $defaultPadding;
+  }
+}
+
+.post {
+  
+	&__img {
+		max-height: 500px
+  }
+  &__content{
+    margin-top: 30px;
+  }
+}

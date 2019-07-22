@@ -1,0 +1,73 @@
+/*
+ * Looking for variables source? 
+ * Check: -> scss/modules/_variables.scss 
+ */
+
+ 
+//set main container properities
+.container {
+	max-width: $wrapperWidth;
+	&,
+	&-fluid {
+    width: 100%;
+		display: flex;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    padding-right: 15px;    
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.container-header{
+  width: 100%;
+  align-content: center;
+  height: 100%;
+}
+.d-flex,
+.container,
+.container-fluid {
+  .cell{
+    flex: 1;
+  }
+}
+.d-flex{
+  @include defaultFlex;  
+}
+// get main grid
+@for $i from 1 through $maxColSize {
+  $val: $i / $maxColSize * 100%;
+  .d-flex,
+	.container,
+	.container-fluid {
+		.cell-#{ $i } {
+			flex: 0 1 $val;
+			max-width: $val;
+      @if $gutterSize != 0 {
+        padding-left: $gutterSize;
+        padding-right: $gutterSize;
+      }
+		}
+	}
+}
+//get media query grid
+@each $key, $val in $breakpoints {
+	@media all and (max-width: $key + px) {
+		@for $i from 1 through $val {
+      $val: $i / $val * 100%;
+      .d-flex,
+			.container,
+			.container-fluid {
+				.cell-#{$key}-#{$i} {
+					flex: 0 1 $val;
+					max-width: $val;
+          @if $gutterSize != 0 {
+            padding-left: $gutterSize;
+            padding-right: $gutterSize;
+          }
+				}
+			}
+		}
+	}
+}
+

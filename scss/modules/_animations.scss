@@ -1,0 +1,43 @@
+.js-anim-line{
+  &::after,
+  &::before{
+    animation: js-anim-line 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    border-color: color(blue,txt)!important;
+  }
+}
+@keyframes js-anim-line{
+  0%{
+    width:0;
+    height:0;
+  }  
+  50%{
+    width: 100%;
+    height: 0;
+  }
+  100%{   
+    width: 100%;
+    height: 80px;
+  }
+}
+
+[projectic-anime="left"]{
+  @include transition__medium;
+  position: relative;
+  left: -150%;
+}
+[projectic-anime="right"]{
+  @include transition__medium;
+  position: relative;
+  right: -150%;
+}
+.js-anim-right{
+  right: 0;
+}
+.js-anim-left{
+  left: 0;
+}
+.js-anim-parent{
+  overflow: hidden;
+}

@@ -1,0 +1,198 @@
+.img-center{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;  
+}
+//default img size from add_image_size setup.php
+.img-small{
+  max-width: 120px;
+}
+.img-medium{
+  max-width: 250px;
+}
+.img-large{
+  max-width: 800px;
+}
+
+// GRID
+.d-block{
+  display: block;
+}
+.d-flex {
+	@include defaultFlex;
+}
+.jc-between {
+	justify-content: space-between;
+}
+.jc-center {
+	justify-content: center;
+}
+.jc-end {
+	justify-content: flex-end;
+}
+.ai-center{
+  align-items: center;
+}
+.ai-base{
+  align-items: baseline;
+}
+.ai-unset{
+  align-items: unset
+}
+.as-center{
+  align-self: center;
+}
+.as-start{
+  align-self: flex-start;
+}
+// order
+.o-1 {
+	order: 1;
+}
+.o-2 {
+	order: 2;
+}
+
+// TXT ALIGN
+.txt-right {
+	text-align: right;
+}
+.txt-left {
+	text-align: right;
+}
+.txt-center {
+	text-align: center;
+}
+
+//show hide
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+@each $key, $val in $breakpoints {
+  
+	@media all and (max-width: $key + px) {
+		.hide-#{$key} {
+			display: none !important;
+		}
+		.show-#{$key} {
+			display: block !important;
+		}
+		.show-ib-#{$key} {
+			display: inline-block !important;
+		}
+		.jc-between-#{$key} {
+			justify-content: space-between;
+		}
+		.jc-center-#{$key} {
+			justify-content: center;
+		}
+		.jc-end-#{$key} {
+			justify-content: flex-end;
+    }
+    .ai-center-#{$key}{
+      align-items: center;
+    }
+    .ai-base-#{$key}{
+      align-items: baseline;
+    }
+    .ai-unset-#{$key}{
+      align-items: unset
+    }
+		.txt-left-#{$key} {
+			text-align: left;
+		}
+		.txt-right-#{$key} {
+			text-align: right;
+		}
+		.txt-center-#{$key} {
+			text-align: center;
+		}
+		.o-1-#{$key} {
+			order: 1;
+		}
+		.o-2-#{$key} {
+			order: 2;
+		}
+  }
+  $keyplus : $key + 1;
+	
+	@media all and (min-width: $keyplus + px) {
+		.show-#{$key} {
+			display: none !important;
+		}
+		.show-ib-#{$key} {
+			display: none !important;
+		}
+	}
+}
+
+//SPACING 
+.mg-b-auto{
+  margin-bottom: auto;
+}
+.mg-t-auto{
+  margin-top: auto;
+}
+.mg-l-auto{
+  margin-left: auto;
+}
+.mg-r-auto{
+  margin-right: auto;
+}
+//usefull to get container without paddings
+.p0 {
+	padding: 0;
+}
+
+// SCSS Functions for list variables and breakpoints
+@each $val in $spacing {
+	.mg-v-#{$val} {
+		margin-top: #{$val}px !important;
+		margin-bottom: #{$val}px !important;
+	}
+	.mg-h-#{$val} {
+		margin-left: #{$val}px !important;
+		margin-right: #{$val}px !important;
+	}
+	.mg-t-#{$val} {
+		margin-top: #{$val}px !important;
+	}
+	.mg-b-#{$val} {
+		margin-bottom: #{$val}px !important;
+	}
+	.mg-l-#{$val} {
+		margin-left: #{$val}px !important;
+	}
+	.mg-r-#{$val} {
+		margin-right: #{$val}px !important;
+  }
+  
+	.pd-v-#{$val} {
+		padding-top: #{$val}px !important;
+		padding-bottom: #{$val}px !important;
+	}
+	.pd-h-#{$val} {
+		padding-left: #{$val}px !important;
+		padding-right: #{$val}px !important;
+	}
+	.pd-t-#{$val} {
+		padding-top: #{$val}px !important;
+	}
+	.pd-b-#{$val} {
+		padding-bottom: #{$val}px !important;
+	}
+	.pd-l-#{$val} {
+		padding-left: #{$val}px !important;
+	}
+	.pd-r-#{$val} {
+		padding-right: #{$val}px !important;
+	}
+}
+
+
+
+//

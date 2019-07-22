@@ -1,0 +1,52 @@
+/*
+ * Looking for variables source? 
+ * Check: -> scss/modules/_variables.scss 
+ */
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 200;
+	background: #ccc;
+  color: #222;
+  text-transform: uppercase;
+	padding: 14px 20px;
+  transition: all 0.2s;
+  min-width: 170px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  &--shadow{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+
+  }
+}
+
+.btn:hover {
+	background: #bbb;
+}
+
+@each $color, $val in $colormap {
+	.btn__#{$color} {
+		background: color($color, hover);
+    color: #fff;
+    border: 2px solid transparent;
+		&:hover {
+			background: color(white, main);
+      color: color($color, hover);
+      border-color: color($color,hover);
+		}
+		&--o {
+			background: white;
+			color: color($color, txt);
+      // border: 1px solid color($color, main);
+      border: 2px solid transparent;
+			&:hover {
+				color: white;
+				border-color:  color($color, hover);
+        background: color($color, hover);
+        color:($color, hover);
+			}
+		}
+	}
+}

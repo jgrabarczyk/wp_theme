@@ -1,0 +1,21 @@
+h1 {
+	font-family: 'Raleway';
+}
+a {	
+	text-decoration: none;
+  @include transition(color, 1.5);
+
+  @include on-event{
+    outline: 0;
+  }
+}
+ 
+strong {
+	font-weight: bold;
+}
+
+@each $size, $value in $fontsize { 
+  .fs-#{$size}{
+    font-size: $value
+  }
+}
