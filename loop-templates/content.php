@@ -10,21 +10,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class('d-flex'); ?>>
+    
     <div class="post-excerpt__img">
       <?php echo projectic_get_thumbnail();?>
     </div>
+
     <div class="post-excerpt__content">
-      <header>        
+      <header class="post-excerpt__content--header">        
           <h2 class="post-excerpt--title"> 
-              <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
           </h2>
 
-          <div class="post-excerpt--details">
-              <?= projectic_posted_on() ?>    
+          <div class="posted-on-details">
+            <?= projectic_posted_on() ?>    
           </div>
       </header>
 
-      <div class="post-excerpt--excerpt">
+      <div class="post-excerpt--excerpt wp-content mg-b-xl">
           <?php projectic_excerpt('projectic_wp_index');?>
       </div>
 

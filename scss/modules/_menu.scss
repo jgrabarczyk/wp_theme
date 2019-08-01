@@ -1,15 +1,18 @@
+header.header {
+	z-index: 10;
+}
+
 header.header .header-wrapper {
-	min-height: $headerMinHeight;
-	// position: fixed; 
 	@include transition__medium;
 	@include defaultFlex;
+	min-height: $headerMinHeight;
 	align-items: center;
 	height: 91px;
 	&.sticky:not(.purple) {
-    box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
-  }
-	&.sticky{
-    height: 61px;
+		box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
+	}
+	&.sticky {
+		height: 61px;
 		.logo {
 			img {
 				height: 23px;
@@ -25,11 +28,10 @@ header.header .header-wrapper {
 			border-top-width: 0;
 		}
 	}
-  #mobile-menu-element .main-nav {
-  flex: 0 1 100%;
-  }
+	#mobile-menu-element .main-nav {
+		flex: 0 1 100%;
+	}
 	.main-nav {
-		// flex: 0 1 100%;
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
@@ -50,14 +52,14 @@ header.header .header-wrapper {
 			flex: 0 1 calc(100% - 240px);
 		}
 	}
-	.logo {		
+	.logo {
 		position: relative;
 		z-index: 9999;
 		@include transition__medium;
 		img {
 			@include transition__medium;
 			height: 55px;
-			max-width: 100%; 
+			max-width: 100%;
 		}
 	}
 }
@@ -68,13 +70,12 @@ header.header .header-wrapper {
 
 header.header ul.main-nav li {
 	> a {
-		color: color(blue,txt);
+		color: color(blue, txt);
 		font-family: raleway;
 		font-weight: bold;
 		font-size: 14px;
 		@include on-event() {
-			// color: #00bcd4;
-			color: color(blue,hover);
+			color: color(blue, hover);
 		}
 	}
 }
@@ -89,26 +90,30 @@ header.header ul.main-nav li {
 		}
 	}
 
-	// nav current item
+  // main  nav current item
+  
+  // hover class
 	header.header ul.main-nav li.current-menu-parent:hover > a,
 	header.header ul.main-nav li.current_page_item:hover a,
 	header.header ul.main-nav li.current-menu-item:hover a {
-	}
-	header.header ul.main-nav li.current-menu-parent > a,
-	header.header ul.main-nav li.current_page_item > a,
+  }
+  
+  //main nav active 
+	header.header ul.main-nav li.current-menu-parent ~ div:not(.current-menu-item ) > a,
+	header.header ul.main-nav li.current_page_item ~ div:not(.current-menu-item ) > a,
 	header.header ul.main-nav li.current-menu-item > a {
-    position: relative;
-    color: #01b3cc;
-    &::before{
-      content: '';
-      border: 2px solid #01b3cc;
-      position: absolute;
-      width: 100%;
-      height: 30px;
-      top: 50%;
-      transform: translatey(-50%);
-      left: 0;
-    }
+		position: relative;
+		color: #01b3cc;
+		&::before {
+			content: "";
+			border: 2px solid #01b3cc;
+			position: absolute;
+			width: 100%;
+			height: 30px;
+			top: 50%;
+			transform: translatey(-50%);
+			left: 0;
+		}
 	}
 
 	header.header ul li ul.sub-menu > a {
@@ -125,7 +130,7 @@ header.header ul.main-nav li {
 			> li {
 				> a {
 					padding: 35px 17px;
-				}				
+				}
 
 				&.current-menu-item > a span {
 					bottom: -10px;
@@ -151,20 +156,19 @@ header.header ul.main-nav li {
 					transform: translateY(20px);
 					transform-origin: 50% 0;
 					-webkit-transform-origin: 50% 0;
-          transition: 500ms;
-          pointer-events: none;
+					transition: 500ms;
+					pointer-events: none;
 					li {
-            &.current-menu-item {
-              
-              border-left-color:  color(blue,hover);
-              background: color(white);
-              
-              a{
-                &::before{
-                  display: none;
-                }
-              }
-            }
+						&.current-menu-item {
+							border-left-color: color(blue, hover);
+							background: color(white);
+
+							a {
+								&::before {
+									display: none;
+								}
+							}
+						}
 						width: 100%;
 						padding: 15px 30px;
 						@include transition__medium;
@@ -174,27 +178,27 @@ header.header ul.main-nav li {
 						}
 						&:hover {
 							background: #fff;
-              border-left-color: color(blue,hover);              
+							border-left-color: color(blue, hover);
 							a {
-								color: color(blue,txt);
+								color: color(blue, txt);
 							}
 						}
 						a {
 							font-size: fs();
 							font-weight: 400;
-							color: color(blue,txt);;
+							color: color(blue, txt);
 							&:hover {
-								color: color(blue,txt);;
+								color: color(blue, txt);
 							}
 						}
 					}
 				}
 				&:hover {
 					.sub-menu {
-            pointer-events: all;
+						pointer-events: all;
 						max-height: 1000px;
-            opacity: 1;
-            transform: translateY(0);						
+						opacity: 1;
+						transform: translateY(0);
 					}
 				}
 			}
@@ -205,8 +209,8 @@ header.header ul.main-nav li {
 	header.header .header-wrapper {
 		display: block;
 		min-height: 0;
-    height: 61px;
-    top:0;
+		height: 61px;
+		top: 0;
 		.logo {
 			z-index: 99999;
 			img {
@@ -232,8 +236,8 @@ header.header ul.main-nav li {
 		display: block;
 		position: absolute;
 		z-index: 9999;
-		top: 20px;
-		right: 15px;
+		top: $defaultPadding;
+		right: $defaultPadding;
 		cursor: pointer;
 
 		div {
@@ -242,7 +246,7 @@ header.header ul.main-nav li {
 			height: 3px;
 			border-radius: 2px;
 			margin-bottom: 4px;
-			background-color: color(blue,hover);
+			background-color: color(blue, hover);
 		}
 
 		&.active {
@@ -304,14 +308,14 @@ header.header ul.main-nav li {
 				@include transition__medium;
 				position: relative;
 				cursor: pointer;
-				font-size: fs('lg');
+				font-size: fs("lg");
 				display: block;
 				width: 100%;
 				line-height: 1em;
 				text-align: center;
 				.sub-menu {
 					display: none;
-					padding-left: 15px;
+					padding-left: $defaultPadding;
 				}
 
 				.mobile-nav-arrow {
@@ -319,18 +323,18 @@ header.header ul.main-nav li {
 					display: inline-block;
 					color: #fff;
 					position: absolute;
-					right: 15px;
+					right: $defaultPadding;
 					top: 25px;
 				}
 				a {
 					color: #fff;
 					@include transition__medium;
-					padding: 15px;
+					padding: $defaultPadding;
 					height: 60px;
 					&.open {
 						&,
 						&:hover {
-							color:color(blue,hover);
+							color: color(blue, hover);
 						}
 					}
 					&:hover {
@@ -358,7 +362,7 @@ header.header ul.main-nav li {
 	#mobile-menu-element > ul > li {
 		margin-left: 0;
 		a {
-			font-size: fs('lg');
+			font-size: fs("lg");
 			display: inline-block;
 		}
 	}

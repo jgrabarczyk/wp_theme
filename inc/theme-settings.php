@@ -97,7 +97,7 @@ function remove_thumbnail_dimensions($html) {
 
 // Custom Gravatar in Settings > Discussion
 function projectic_gravatar($avatar_defaults) {
-    $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
+    $myavatar = get_template_directory_uri() . '/assets/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
     return $avatar_defaults;
 }
@@ -126,13 +126,13 @@ function projectic_get_thumbnail($size= NULL){
                 title="'. get_the_title() . '">
                 <img 
                   class="'.$img_size.'" 
-                  src="'. get_template_directory_uri() .'/img/default.png">
+                  src="'. get_template_directory_uri() .'/assets/img/default.png">
             </a>';
     endif;
 }
 function projectic_bacgrounded_img(){
   
-    $default_url =  get_template_directory_uri() .'/img/default.png';
+    $default_url =  get_template_directory_uri() .'/assets/img/default.png';
     $url = (has_post_thumbnail()) ?  get_the_post_thumbnail_url() : $default_url ;
     $url =  $_SERVER['SERVER_NAME']  == 'localhost' ?  'http:'.$url : $url;        
     

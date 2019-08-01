@@ -10,38 +10,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); ?>
 
-<div class="wrapper">
-    <main role="main">
-        <section>
+<main role="main">
+  <div class="container">
+    <section >
+      <header class="page-header mg-v-xl">
+        <h1 class="main-title">
+          <?php
+            echo sprintf(__('%s Search Results for ', 'projectic'), $wp_query->found_posts);
+            echo get_search_query();
+          ?>
+        </h1>
+      </header>
 
-            <h1>
-                <?php
-                    echo sprintf(__('%s Search Results for ', 'projectic'), $wp_query->found_posts);
-                    echo get_search_query();
-                ?>
-            </h1>
-
-                <?php if (have_posts()): ?>
-                    <?php while ( have_posts() ) : the_post(); ?>
-                                    
-                       <?php get_template_part( 'loop-templates/content' ); ?>
-    
-                    <?php endwhile; ?>            
-
-                <?php get_template_part('pagination'); ?>
-
-                <?php else: ?>
-    
-                    <?php get_template_part( 'loop-templates/content', 'none' ); ?>
-    
-                <?php endif; ?>
-    
-
-                
-
-        </section>
-        <!-- /section -->
-    </main>
-</div>
+      <?php if (have_posts()): ?>
+        <?php while ( have_posts() ) : the_post(); ?>                                    
+          <?php get_template_part( 'loop-templates/content' ); ?>    
+        <?php endwhile; ?>            
+      <?php get_template_part('pagination'); ?>
+      <?php else: ?>    
+        <?php get_template_part( 'loop-templates/content', 'none' ); ?>    
+      <?php endif; ?>                
+    </section>
+  </div>
+</main>
 
 <?php get_footer(); ?>

@@ -10,38 +10,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); ?>
 
-<div class="wrapper">
-    <main role="main">
-        <div class="archive-content-wrapper">
-            
-            <section>
-                <?php if (have_posts()): ?>
-                    
-                    <header class="page-header">
-                        <h1><?php _e('Archives', 'projectic'); ?></h1>
-                    </header>
+<main role="main">
+  <div class="container ">      
+    <section>
+      <header class="page-header mg-v-xl">
+        <h1 class="main-title"><?php the_archive_title( ); ?></h1>
+      </header>
 
-                    <?php while (have_posts()) : the_post(); ?>
+      <?php 
+        if (have_posts()):              
+          while (have_posts()) : the_post();
+            get_template_part( 'loop-templates/content' );
+            endwhile;
 
-                        <?php get_template_part( 'loop-templates/content' ); ?>
+            get_template_part('pagination');  
 
-                    <?php endwhile; ?>
-                    
-                    <?php get_template_part('pagination'); ?>  
+        else:
+          get_template_part( 'loop-templates/content', 'none' ); 
+        endif; 
+      ?>
+    </section>
 
-                <?php else: ?>
+    <aside>
+      <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('blog-widget-list')) : ?>
+      <?php endif; ?>
+    </aside>
+  </div>
+</main>
 
-                    <?php get_template_part( 'loop-templates/content', 'none' ); ?>
-
-                <?php endif; ?>
-
-            </section>
-
-            <aside>
-                <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('blog-widget-list')) : ?>
-                <?php endif; ?>
-            </aside>
-        </div>
-    </main>
-</div>
 <?php get_footer(); ?>

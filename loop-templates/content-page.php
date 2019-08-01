@@ -10,18 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <article id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
+  <div class="page-img mg-t-xl">
+    <?= projectic_get_thumbnail('medium');?>
+  </div>
 
-	<header class="page-header">
-		
-		<?php the_title( '<h1 class="page-title -bordered">', '</h1>' ); ?>
-		
+	<header class="entry-header mg-v-xl">
+    <h1 class="main-title"> <?php the_title(); ?> </h1>
 
+    <div class="posted-on-details">
+      <?php projectic_posted_on(); ?>       
+    </div>      
 	</header>
 
-
-    <?php # echo projectic_get_thumbnail();?>
-
-	<div class="page-content">
+  <?php //use .wp-content mg-b-xl class to wrap around WYSWIG contents to get proper styling ?>
+	<div class="wp-content mg-b-xl">
 		<?php the_content(); ?>
 	</div>
 	<?php the_tags(__('Tags: ', 'projectic'), ', ', '<br>'); ?>

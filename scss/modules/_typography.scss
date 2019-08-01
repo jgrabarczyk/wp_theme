@@ -1,21 +1,33 @@
 h1 {
-	font-family: 'Raleway';
+	font-family: "Raleway";
 }
-a {	
-	text-decoration: none;
-  @include transition(color, 1.5);
 
-  @include on-event{
+a {
+	text-decoration: none;
+	@include transition(color, 1.5);
+  color: $mainColorActive;
+
+	@include on-event {
     outline: 0;
-  }
+    color: $mainColorActiveHover;
+	}
 }
- 
+
 strong {
 	font-weight: bold;
 }
 
-@each $size, $value in $fontsize { 
-  .fs-#{$size}{
-    font-size: $value
-  }
+@each $size, $value in $fontsize {
+	.fs-#{$size} {
+		font-size: $value;
+	}
+}
+//default title class used for h1 - page titles and so on
+.main-title{
+  font-size: fs(xl);
+  // margin-top: 50px;  
+}
+//secondary title class used for h2 - content-none title
+.main-subtitle{
+  font-size: fs(lg);
 }

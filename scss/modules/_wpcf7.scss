@@ -8,14 +8,14 @@
 			border: 1px solid #dfe5e8;
 			width: 100%;
 			margin-bottom: 25px;
-      font-family: "Raleway";
-      min-width: 1px;
+			font-family: "Raleway";
+			min-width: 1px;
 		}
 		input[type="submit"] {
 			margin-top: 40px;
-      margin-bottom: 40px;
-      min-width: 1px;
-      font-size: 20px;
+			margin-bottom: 40px;
+			min-width: 1px;
+			font-size: 20px;
 		}
 		.kontakt_text {
 			font-weight: 100;
@@ -27,49 +27,43 @@
 			display: inline-block;
 			top: -14px;
 			margin-bottom: 14px;
-    }
-
-    
-  }
-  
+		}
+	}
 }
 
-
-.newsletter-form-wrapper{
-  $submitWidth: 110px;
-  .newsletter-form-container{
-    max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .wpcf7-form-control-wrap{
-    width: calc(100% - 110px)!important;
-     input:not([type="submit"]){
-      width: 100%;
-      max-width: 100%;
-      padding: 15px 12px 15px 20px;
-      margin-bottom: 15px;
-    }    
-  }
-  input.newsletter__submit{
-    height: 51px;
-    width: 110px;
-    font-size: 30px!important;
-  }
+.newsletter-form-wrapper {
+	$submitWidth: 110px;
+	.newsletter-form-container {
+		max-width: 540px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.wpcf7-form-control-wrap {
+		width: calc(100% - 110px) !important;
+		input:not([type="submit"]) {
+			width: 100%;
+			max-width: 100%;
+			padding: 15px 12px 15px 20px;
+			margin-bottom: 15px;
+		}
+	}
+	input.newsletter__submit {
+		height: 51px;
+		width: 110px;
+		font-size: 30px !important;
+	}
 }
-@media(max-width: 480px){
-  .wpcf7-form-control-wrap.your-email{
-    input{
-      margin-bottom: 0!important;
-      text-align: center;
-    }
-  }
-  input.newsletter__submit,
-  .wpcf7-form-control-wrap.your-email{
-    width: 100%!important;
-    max-width: 100%!important;
-  }
-  // input.newsletter__submit{
-  //   width: 100%;
-  // }
+@media (max-width: 480px) {
+	.wpcf7-form-control-wrap.your-email {
+		input {
+			margin-bottom: 0 !important;
+			text-align: center;
+		}
+	}
+	input.newsletter__submit,
+	.wpcf7-form-control-wrap.your-email {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+
 }

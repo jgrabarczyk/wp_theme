@@ -62,9 +62,20 @@ a img.aligncenter {
 	width: auto;
 }
 .wp-caption .wp-caption-text,
+
 .gallery-caption {
 	font-size: 11px;
 	line-height: 17px;
 	margin: 0;
 	padding: 0 4px 5px;
+}
+
+// WYSWIG styles
+.wp-content{
+  p{
+    font-size: fs();
+    &:not(:last-child){
+      margin-bottom: 1rem;
+    }
+  }
 }

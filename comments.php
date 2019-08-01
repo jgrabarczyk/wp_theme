@@ -1,24 +1,19 @@
 <div class="comments">
-    <?php if (post_password_required()) : ?>
-        <p><?php _e('Post is password protected. Enter the password to view any comments.', 'projectic'); ?></p>
-    </div>
+  <?php if (post_password_required()) : ?>
+      <p><?php _e('Post is password protected. Enter the password to view any comments.', 'projectic'); ?></p>
+  </div>
 
-    <?php return;
+  <?php return;
 endif;
 ?>
 
 <?php if (have_comments()) : ?>
-
-    <h2><?php comments_number(); ?></h2>
-
-    <ul>
-    <?php wp_list_comments('type=comment&callback=ggcomments'); // Custom callback in functions.php   ?>
-    </ul>
-
+  <h2><?php comments_number(); ?></h2>
+  <ul>
+    <?php wp_list_comments('type=comment'); // Custom callback in functions.php   ?>
+  </ul>
 <?php elseif (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-
-    <p><?php _e('Comments are closed here.', 'projectic'); ?></p>
-
+  <p><?php _e('Comments are closed here.', 'projectic'); ?></p>
 <?php endif; ?>
 
 <?php comment_form(); ?>

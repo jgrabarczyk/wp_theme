@@ -1,85 +1,61 @@
-//grid
+//set up ur theme here
 $maxColSize: 12;
 $breakpoints: (
-	991: 12,
-	768: 12,
-	580: 12,
-	480: 12
+	991: $maxColSize,
+	768: $maxColSize,
+	580: $maxColSize,
+	480: $maxColSize
 );
-$gutterSize: 0;
 
-//spacing
-$spacing: ( 0, 10, 15, 25, 30, 50, 100);
+$spacing: (
+  0: 0, 
+  xs: 10, 
+  sm: 15, 
+  m: 25, 
+  lg: 30, 
+  xl: 50, 
+  xxl: 100
+);
 
-//colors
-$colormap: (
+$colormap: (	
+	white: (
+		main: #fff,
+		hover: #eee,
+		txt: #fff
+	),
+	black: (
+		main: #010101,
+		hover: #444,
+		txt: #333
+	),
 	blue: (
-		main: #212331,
+		main: #001eff,
 		hover: #01b3cc,
-    txt: #3c3950 ,    
-  ), 
-  
-	purple: (
-		main: #673f92,
-		hover: #7a4ba6,
-		txt: #673f92,
-  ),
-  white:(
-    main: #fff,
-    hover: #eee,
-    txt: #fff,
-  ),
-  black:(
-    main: #010101,
-    hover: #444,
-    txt: #333
-  ),
-  gold:(
-    main: #f7df73,
-    hover: #f7df73,
-    txt: #f7df73
-  )
+		txt: #3c3950
+	),	
 );
-
-$lightblueAlpha: rgba(19, 111, 179, 0.007);
-
 
 $fontsize: (
-  sm: 14px,
-  init: 16px,
-  m: 18px,
-  lg: 26px,
-  xl: 36px,
-  xxl: 60px,
+	sm: 14px,
+	init: 16px,
+	m: 18px,
+	lg: 26px,
+	xl: 36px,
+	xxl: 60px
 );
 
-$mainColorActive: color(blue,hover);
-$mainColor: color(black, txt);
-$mainColorActive2: hsl(15, 73%, 38%);
-
-$bgColorPri: #fff;
-$bgColorSec: #fff;
-$lightBlack: hsl(15, 73%, 48%);;
-
 $wrapperWidth: 1200px;
-$defaultPadding: 15px;
-$wrapperPaddingRight: 15px;
 $headerMinHeight: 30px;
+$defaultSpacing: 50px;
+$defaultPadding: 15px;
+$gridGutterSize: 0;
+
+// font color, borders
+$mainColor: color(black, txt);
+//base hovers / actives
+$mainColorActive: color(blue);
+//alternate hovers / actives
+$mainColorActiveHover: color(blue, hover);
 
 
-@function color($color-name, $color-variant:null) {
-  @if $color-variant != null {
-    @return map-get(map-get($colormap,$color-name),$color-variant);
-  } @else {
-    @if type-of(map-get($colormap,$color-name)) == 'map' {
-      @return map-get(map-get($colormap,$color-name),main);
-    } @else {
-      @return map-get($colormap,$color-name);
-    }
-  }
-}
 
-
-@function fs($fs:'init'){
-@return map-get($fontsize, $fs);
-}

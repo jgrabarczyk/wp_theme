@@ -1,15 +1,19 @@
 // ie yeah we trying to remember about it
 @mixin defaultFlex {
-	display: -webkit-box!important;
-	display: -moz-box!important;
-	display: -ms-flexbox!important;
-	display: -webkit-flex!important;
-	display: flex!important;
+	display: -webkit-box !important;
+	display: -moz-box !important;
+	display: -ms-flexbox !important;
+	display: -webkit-flex !important;
+	display: flex !important;
 	flex-wrap: wrap;
 }
 
-@mixin transition($properity, $length, $transition_style: cubic-bezier(0.215, 0.61, 0.355, 1)) {
-	transition: $length + s $properity + ' ' + $transition_style ;
+@mixin transition(
+	$properity,
+	$length,
+	$transition_style: cubic-bezier(0.215, 0.61, 0.355, 1)
+) {
+	transition: $length + s $properity + " " + $transition_style;
 }
 @mixin multiple-transition(
 	$properities,
@@ -54,3 +58,4 @@
 		}
 	}
 }
+

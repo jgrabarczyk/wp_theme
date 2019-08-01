@@ -9,7 +9,7 @@
 			$menuBtn = jQuery("#mobile-menu-handler"),
 			$menuWrapper = jQuery(".nav");
 
-      $window = jQuery(window);
+		$window = jQuery(window);
 
 		$window.on("scroll resize", function() {
 			stickMenuToTop();
@@ -17,7 +17,10 @@
 
 		//close if clicked outside
 		jQuery(document).on("click tap touch", function(e) {
-			if (!$menuWrapper.is(e.target) && $menuWrapper.has(e.target).length === 0) {
+			if (
+				!$menuWrapper.is(e.target) &&
+				$menuWrapper.has(e.target).length === 0
+			) {
 				closeMainMenu();
 			}
 		});
@@ -54,6 +57,34 @@
 			} else {
 				$menu.removeClass("sticky");
 			}
+		}
+	}
+})(jQuery, this);
+
+(function($, root, undefined) {
+	$(document).ready(function() {
+		handleSubMenu();
+	});
+
+	function handleSubMenu() {
+		addToggleArrowToSubMenu();
+		animateArrowSubMenu();
+	}
+
+	function animateArrowSubMenu() {
+		$(".mobile-nav-arrow").on("click tap touch", function() {
+			$(this)
+				.siblings(".sub-menu")
+				.slideToggle("slow");
+			$(this).toggleClass("rotate-arrow");
+		});
+	}
+
+	function addToggleArrowToSubMenu() {
+		if ($(".header-main-menu ul li").children(".sub-menu").length > 0) {
+			$(".sub-menu").before(
+				'<span class="mobile-nav-arrow"><i class="fa fa-angle-down"></i></span>'
+			);
 		}
 	}
 })(jQuery, this);

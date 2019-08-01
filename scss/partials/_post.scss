@@ -2,18 +2,19 @@
 	&__img {
 		flex: 0 1 300px;
 		max-width: 300px;
-  }
-  &__content{
-    padding-left:  $defaultPadding;
-  }
+	}
+	&__content {
+		padding-left: $defaultPadding;
+		flex: 0 1 calc(100% - 300px);
+
+	}
 }
 
 .post {
-  
 	&__img {
-		max-height: 500px
-  }
-  &__content{
-    margin-top: 30px;
-  }
+		max-height: 500px;
+	}
+	&__content {
+		margin-top: 30px;
+	}
 }

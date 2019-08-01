@@ -1,0 +1,15 @@
+@function color($color-name, $color-variant: null) {
+	@if $color-variant != null {
+		@return map-get(map-get($colormap, $color-name), $color-variant);
+	} @else {
+		@if type-of(map-get($colormap, $color-name)) == "map" {
+			@return map-get(map-get($colormap, $color-name), main);
+		} @else {
+			@return map-get($colormap, $color-name);
+		}
+	}
+}
+
+@function fs($fs: "init") {
+	@return map-get($fontsize, $fs);
+}

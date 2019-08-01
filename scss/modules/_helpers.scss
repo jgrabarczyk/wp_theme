@@ -149,46 +149,46 @@
 }
 
 // SCSS Functions for list variables and breakpoints
-@each $val in $spacing {
-	.mg-v-#{$val} {
+@each $key, $val in $spacing {
+	.mg-v-#{$key} {
 		margin-top: #{$val}px !important;
 		margin-bottom: #{$val}px !important;
 	}
-	.mg-h-#{$val} {
+	.mg-h-#{$key} {
 		margin-left: #{$val}px !important;
 		margin-right: #{$val}px !important;
 	}
-	.mg-t-#{$val} {
+	.mg-t-#{$key} {
 		margin-top: #{$val}px !important;
 	}
-	.mg-b-#{$val} {
+	.mg-b-#{$key} {
 		margin-bottom: #{$val}px !important;
 	}
-	.mg-l-#{$val} {
+	.mg-l-#{$key} {
 		margin-left: #{$val}px !important;
 	}
-	.mg-r-#{$val} {
+	.mg-r-#{$key} {
 		margin-right: #{$val}px !important;
   }
   
-	.pd-v-#{$val} {
+	.pd-v-#{$key} {
 		padding-top: #{$val}px !important;
 		padding-bottom: #{$val}px !important;
 	}
-	.pd-h-#{$val} {
+	.pd-h-#{$key} {
 		padding-left: #{$val}px !important;
 		padding-right: #{$val}px !important;
 	}
-	.pd-t-#{$val} {
+	.pd-t-#{$key} {
 		padding-top: #{$val}px !important;
 	}
-	.pd-b-#{$val} {
+	.pd-b-#{$key} {
 		padding-bottom: #{$val}px !important;
 	}
-	.pd-l-#{$val} {
+	.pd-l-#{$key} {
 		padding-left: #{$val}px !important;
 	}
-	.pd-r-#{$val} {
+	.pd-r-#{$key} {
 		padding-right: #{$val}px !important;
 	}
 }

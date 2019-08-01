@@ -10,30 +10,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); ?>
 
-<div class="wrapper">
-    <main role="main">
-        <!-- section -->        
-        <section >
-            <h1 class="mg-t-50 pd-h-30 h1 fs-xl"><?php _e('Latest Posts', 'projectic'); ?></h1>
-            <div class="container">
-              <?php if (have_posts()): ?>
-                  <?php while ( have_posts() ) : the_post(); ?>
-                                  
-                      <?php get_template_part( 'loop-templates/content' ); ?>
+<main role="main">      
+  <div class="container">
 
-                  <?php endwhile; ?>            
+    <section>
+      <header class="page-header mg-v-xl">
+        <h1 class="main-title"><?php _e('Latest Posts', 'projectic'); ?></h1>
+      </header>      
+      
+      <?php 
+        if (have_posts()): 
+          while (have_posts()) : the_post(); 
+            get_template_part('loop-templates/content'); 
+          endwhile; 
 
-              <?php get_template_part('pagination'); ?>
+        else: 
+          get_template_part('loop-templates/content', 'none'); 
+        endif; 
+      ?>
+    </section>    
 
-              <?php else: ?>
-
-                  <?php get_template_part( 'loop-templates/content', 'none' ); ?>
-
-              <?php endif; ?>
-            </div>
-        </section>
-        <!-- /section -->
-    </main>
-</div>
+  </div>
+</main>
 
 <?php get_footer(); ?>

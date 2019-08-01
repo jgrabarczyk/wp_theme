@@ -116,7 +116,7 @@
 
 ## 1.3.0 (09 February, 2013)
 
-* Remove jquery.min.js 'local' fallback from /js/ folder, simply fallback to another CDN (CloudFlare), see footer.php, saves code and maintenance across all sites
+* Remove jquery.min.js 'local' fallback from /assets/js/ folder, simply fallback to another CDN (CloudFlare), see footer.php, saves code and maintenance across all sites
 * Remove Google Analytics and jQuery fallback from functions.php injection, added manually in footer.php
 * Setup Conditionizr to supply anprojecticShim to Less Than IE9 browsers
 * Updates Conditionizr to v1.2.0, enhanced retina detection and unlimited 'customScript', for polyfill usage (e.g. using respond.js andprojecticshim together)
@@ -143,7 +143,7 @@
 	* Conditional statement for mediaqueries.min.js removed (added dynamically with Conditionizr, included inside scripts.js)
 	* conditionizr.min.js and conditionizr.js enqueued
 	* /css/conditionizr/ added with browser styles
-	* /js/conditionizr/ added with browser scripts
+	* /assets/js/conditionizr/ added with browser scripts
 * Shortened ViewPort meta tag with user scalable enabled
 
 ## 1.2.5 (09 December, 2012)
