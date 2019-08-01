@@ -1,5 +1,3 @@
-# [gg Blank](http://gg.com) License
-
 ## MIT License
 
 Copyright &copy; 2013projectic Blank // @gg
