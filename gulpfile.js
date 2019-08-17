@@ -46,5 +46,9 @@ gulp.task("watch", function() {
 			"scss/**/*.scss",
 			gulp.series("default")
 		)
-		.on("change", browserSync.reload);
+	gulp.watch('**/*.php').on("change", browserSync.reload);
+	gulp.watch('assets/js/*.js').on("change", browserSync.reload);
+	gulp.watch('scss/**/*.scss').on("change", browserSync.reload);
+	
+	
 });
