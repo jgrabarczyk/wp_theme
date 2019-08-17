@@ -1,7 +1,7 @@
 <?php
 
 //wp_theme Blank navigation
-function wp_theme_nav() {
+function wp_theme_render_nav() {
     wp_nav_menu(
             array(
                 'theme_location' => 'header-menu',
@@ -9,14 +9,12 @@ function wp_theme_nav() {
                 'container' => 'div',
                 'container_class' => 'menu-{menu slug}-container',
                 'container_id' => '',
-                'menu_class' => 'menu',
+                'menu_class' => 'main-menu',
                 'menu_id' => '',
                 'echo' => true,
                 'fallback_cb' => 'wp_page_menu',
                 'before' => '',
                 'after' => '',
-                'link_before' => '<span>',
-                'link_after' => '</span>',
                 'items_wrap' => '<ul class="main-nav" >%3$s</ul>',
                 'depth' => 0,
                 'walker' => ''
@@ -37,8 +35,6 @@ function wp_theme_lang_nav() {
                 'fallback_cb' => 'wp_page_menu',
                 'before' => '',
                 'after' => '',
-                'link_before' => '<span>',
-                'link_after' => '</span>',
                 'items_wrap' => '<ul>%3$s</ul>',
                 'depth' => 0,
                 'walker' => ''
@@ -107,6 +103,6 @@ if (function_exists('add_theme_support')) {
     load_theme_textdomain('wp_theme', get_template_directory() . '/languages');
 }
 
-function render_search_form(){
+function wp_theme_render_search_form(){
   get_template_part('searchform');
 }
