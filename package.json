@@ -1,0 +1,34 @@
+{
+  "name": "wp_theme",
+  "version": "1.0.0",
+  "description": "default",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp-cli": "^2.2.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-wait": "^0.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-autoprefixer": "^6.1.0",
+    "browser-sync" : "^2.26.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3"
+  },
+  "scripts": {
+    "test": "npm-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jareckikck/wp_theme.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "jarek grabarczyk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jareckikck/wp_theme/issues"
+  },
+  "homepage": "https://github.com/jareckikck/wp_theme#readme"
+}
