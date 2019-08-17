@@ -64,4 +64,3 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php endif; ?>
 	</div><!-- .page-content -->
-<!-- </section>.no-results -->
