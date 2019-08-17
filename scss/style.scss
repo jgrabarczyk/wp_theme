@@ -16,7 +16,7 @@
 /* 
  * wp_theme files 
  * be carefull about queuing
- */
+ */ 
 
 //core scss module files
 @import "modules/_reset.scss";
@@ -26,13 +26,13 @@
 @import "modules/_grid.scss";            
 @import "modules/_typography.scss";       
 @import "modules/_helpers.scss";          
+@import "modules/_buttons.scss";          
 
 @import "modules/_wp-core.scss";  // wordpress WYSWIG styles 
-@import "modules/_wpcf7.scss";            
-@import "modules/_print.scss";            
-@import "modules/_buttons.scss";          
 @import "modules/_functions-classes.scss"; // is it needed? 
 @import "modules/_animations.scss";       
+@import "modules/_print.scss";            
+@import "modules/_wpcf7.scss";            
 
 //partials scss template files
 @import "partials/_menu.scss";     // change to paritals
@@ -74,10 +74,8 @@ body {
 img {
 	max-width: 100%;
 	height: auto;
-	display: block;
+	display: block; 
 }
-
-
 
 // /*------------------------------------*\
 //     STRUCTURE - wrappers
@@ -184,7 +182,8 @@ $border-color: #dfe5e8;
 	width: 100%;
 	height: 100%;
 }
- 
+// rwd trick for iframes end
+  
 .search { 
 	article {
 		@include defaultFlex;

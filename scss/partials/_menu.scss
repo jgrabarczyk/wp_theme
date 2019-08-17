@@ -18,17 +18,13 @@ header.header .header-wrapper {
 				height: 23px;
 				width: auto;
 			}
-		}
-		#mobile-menu-element > ul > li > a {
-			padding-top: 23px;
-			padding-bottom: 23px;
-		}
+		}	
 		&::before {
 			pointer-events: none;
 			border-top-width: 0;
 		}
 	}
-	#mobile-menu-element .main-nav {
+	#menu-body .main-nav {
 		flex: 0 1 100%;
 	}
 	.main-nav {
@@ -91,14 +87,17 @@ header.header ul.main-nav li {
 	}
 
   // main  nav current item
-  
+  .menu-item-has-children{
+		position: relative;
+	}
   // hover class
 	header.header ul.main-nav li.current-menu-parent:hover > a,
 	header.header ul.main-nav li.current_page_item:hover a,
 	header.header ul.main-nav li.current-menu-item:hover a {
   }
   
-  //main nav active 
+	//main nav active 
+	
 	header.header ul.main-nav li.current-menu-parent ~ div:not(.current-menu-item ) > a,
 	header.header ul.main-nav li.current_page_item ~ div:not(.current-menu-item ) > a,
 	header.header ul.main-nav li.current-menu-item > a {
@@ -125,7 +124,7 @@ header.header ul.main-nav li {
 		}
 	}
 
-	#mobile-menu-element {
+	#menu-body {
 		ul.main-nav {
 			> li {
 				> a {
@@ -268,7 +267,7 @@ header.header ul.main-nav li {
 		}
 	}
 
-	#mobile-menu-element {
+	#menu-body {
 		@include transition__medium;
 		will-change: transform, opacity;
 		position: fixed;
@@ -349,7 +348,7 @@ header.header ul.main-nav li {
 		}
 	}
 
-	.header-fixed #mobile-menu-element > ul {
+	.header-fixed #menu-body > ul {
 		@include transition__medium;
 		top: 310px;
 	}
@@ -359,7 +358,7 @@ header.header ul.main-nav li {
 		@include transition__medium;
 	}
 
-	#mobile-menu-element > ul > li {
+	#menu-body > ul > li {
 		margin-left: 0;
 		a {
 			font-size: fs("lg");

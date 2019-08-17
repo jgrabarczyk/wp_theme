@@ -177,7 +177,7 @@
 
 ## 1.2.1 (07 October, 2012)
 
-* Custom callback for wp_nav_menu, now in functions.php with wp_theme_nav(); in header.php
+* Custom callback for wp_nav_menu, now in functions.php with wp_theme_render_nav(); in header.php
 * JavaScript added to 'scripts.js', hides URL bar after page load on iPhone/iPad, great for responsive projects
 * Meta tag 'apple-mobile-web-app-capable' added to header.php
 * Meta tag 'apple-mobile-web-app-status-bar-style' added to header.php
