@@ -1,20 +1,29 @@
 var gulp = require("gulp");
 var sass = require("gulp-sass");
-var wait = require("gulp-wait");
 var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
 var browserSync = require("browser-sync").create();
-
+const AUTOPREFIXER_BROWSERS = [
+	'last 2 version',
+	'> 1%',
+	'ie >= 9',
+	'ie_mob >= 10',
+	'ff >= 30',
+	'chrome >= 34',
+	'safari >= 7',
+	'opera >= 23',
+	'ios >= 7',
+	'android >= 4',
+	'bb >= 10'
+ ];
 gulp.task("default", function() {
 	return gulp
 		.src("scss/style.scss")
 		.pipe(sourcemaps.init())
-		.pipe(wait(500))
 		.pipe(
 			sass({
 				errLogToConsole: true
-			})
-		) //zwracanie błędów w konsoli
+			})) 
 		.pipe(
 			sass({
 				outputStyle: "nested"
@@ -22,33 +31,24 @@ gulp.task("default", function() {
 		)
 		.pipe(
 			autoprefixer({
-				overrideBrowserslist: [
-					"last 1 version",
-					"> 1%",
-					"IE 10"
-				],
+				overrideBrowserslist: AUTOPREFIXER_BROWSERS,
 				cascade: false,
 				grid: true
 			})
 		)
 		.pipe(sourcemaps.write("/maps"))
-    .pipe(gulp.dest("/")) //ścieżka do pliku wynikowego (zapisywanego)
-    .pipe(wait(500))
-		.pipe(browserSync.stream());
+    .pipe(gulp.dest("/")) 
+		.pipe(browserSync.stream())		
+		
 });
 gulp.task("watch", function() {
 	browserSync.init({
-		proxy: "http://localhost/playground/"
-	});
+		open: false,
+		proxy: "http://localhost/playground/",
+		reloadDelay: 500,
 
-	gulp
-		.watch(
-			"scss/**/*.scss",
-			gulp.series("default")
-		)
+	});
+	gulp.watch("scss/**/*.scss", gulp.series("default")).on("change", browserSync.reload);
 	gulp.watch('**/*.php').on("change", browserSync.reload);
 	gulp.watch('assets/js/*.js').on("change", browserSync.reload);
-	gulp.watch('scss/**/*.scss').on("change", browserSync.reload);
-	
-	
 });
