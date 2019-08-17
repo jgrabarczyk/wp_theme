@@ -37,7 +37,7 @@ gulp.task("default", function() {
 			})
 		)
 		.pipe(sourcemaps.write("/maps"))
-    .pipe(gulp.dest("/")) 
+    .pipe(gulp.dest("./")) 
 		.pipe(browserSync.stream())		
 		
 });
