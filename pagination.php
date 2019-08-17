@@ -2,7 +2,7 @@
 /**
  * Partial file with pagination 
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,6 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="pagination">
 
-    <?php projectic_wp_pagination(); ?> 
+    <?php wp_theme_wp_pagination(); ?> 
 
 </div>

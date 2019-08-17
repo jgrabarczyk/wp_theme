@@ -10,11 +10,11 @@ $breakpoints: (
 $spacing: (
   0: 0, 
   xs: 10, 
-  sm: 15, 
-  m: 25, 
+  sm: 15,   
+  m: 25,  
   lg: 30, 
   xl: 50, 
-  xxl: 100
+  xxl: 100  
 );
 
 $colormap: (	
@@ -22,8 +22,8 @@ $colormap: (
 		main: #fff,
 		hover: #eee,
 		txt: #fff
-	),
-	black: (
+	), 
+	black: ( 
 		main: #010101,
 		hover: #444,
 		txt: #333

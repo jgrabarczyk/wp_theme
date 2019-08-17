@@ -2,7 +2,7 @@
 /**
  * Custom page template
  * Template Name: Home Page
- * @package projectic  
+ * @package wp_theme  
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.

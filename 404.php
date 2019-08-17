@@ -2,7 +2,7 @@
 /**
  * 404 template
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ get_header(); ?>
     <section class="no-results not-found">
       
       <header class="page-header mg-v-xl">
-        <h1 class="main-title"> <?= __('You seems lost', 'projectic'); ?> </h1>
+        <h1 class="main-title"> <?= __('You seems lost', 'wp_theme'); ?> </h1>
       </header>
 
       <?php get_template_part( 'loop-templates/content', 'none' ); ?>

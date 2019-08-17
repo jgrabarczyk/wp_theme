@@ -1,22 +1,20 @@
 /*
-  Theme Name:projectic
-  Theme URI: http://projectic.pl
+  Theme Name:wp_theme
+  Theme URI: http://wp_theme.pl
   Version: 1.1.0
-  Author:projectic (@projectic)
-  Author URI: http://projectic.pl
+  Author: Jaroslaw Grabarczyk (jaroslawgrabarczyk01@gmail.com)
   Tags: Wordpress, HTML, CSS3
   License: MIT
   License URI: http://opensource.org/licenses/mit-license.php
-  Description:projectic.pl theme for Wordpress
-
-  
+  Description:wp_theme.pl theme for Wordpress
 */
 
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
 
-/* import template files 
+/* 
+ * wp_theme files 
  * be carefull about queuing
  */
 
@@ -28,7 +26,7 @@
 @import "modules/_grid.scss";            
 @import "modules/_typography.scss";       
 @import "modules/_helpers.scss";          
-@import "modules/_menu.scss";     // change to paritals
+
 @import "modules/_wp-core.scss";  // wordpress WYSWIG styles 
 @import "modules/_wpcf7.scss";            
 @import "modules/_print.scss";            
@@ -37,10 +35,11 @@
 @import "modules/_animations.scss";       
 
 //partials scss template files
+@import "partials/_menu.scss";     // change to paritals
 @import "partials/_post.scss";
 @import "partials/_page.scss";
 
-/* global box-sizing */
+/* global box-sizing */ 
 *,
 *:after,
 *:before {
@@ -172,29 +171,30 @@ $border-color: #dfe5e8;
 	position: relative;
 	padding-bottom: 56.25%;
 	overflow: hidden;
-	max-width: 100%;
+	max-width: 100%; 
 	width: 100%;
 	height: auto;
 }
 .embed-container iframe,
-.embed-container object,
+.embed-container object, 
 .embed-container embed {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 0; 
+	left: 0;  
 	width: 100%;
 	height: 100%;
 }
-
-.search {
+ 
+.search { 
 	article {
 		@include defaultFlex;
-	}
+	}  
 }
 
 // .custom-background article {
-	// padding: 15px;              // change to variable
+	// padding: 15px;              // change to variable 
 	// margin-top: 50px;           // change to variable
-	// margin-bottom: 50px;        // change to variable
+	// margin-bottom: 50px;        // change to variable 
 	// background: rgba(color(white), 0.8);
 // }
+ 

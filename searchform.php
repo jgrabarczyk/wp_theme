@@ -2,7 +2,7 @@
 /**
  * Partial file with searchform 
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       class="search-input" 
       type="search" 
       name="s" 
-      placeholder="<?php _e('Search...', 'projectic'); ?>">
+      placeholder="<?php _e('Search...', 'wp_theme'); ?>">
 
     <button 
       class="search-submit" 

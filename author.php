@@ -8,7 +8,7 @@
 
                 <h1>
                     <?=  
-                    __('Author Archives for ', 'projectic') .
+                    __('Author Archives for ', 'wp_theme') .
                     get_the_author(); 
                     ?>
                 </h1>
@@ -19,7 +19,7 @@
 
                     <h2>
                         <?=
-                        _e('About ', 'projectic').
+                        _e('About ', 'wp_theme').
                         get_the_author();
                         ?>
                     </h2>
@@ -37,7 +37,7 @@
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
                         <!-- post thumbnail -->
-                        <?php echo projectic_get_thumbnail();?>
+                        <?php echo wp_theme_get_thumbnail();?>
                         <!-- /post thumbnail -->
 
                         <!-- post title -->
@@ -48,11 +48,11 @@
 
                         <!-- post details -->
                         <span class="date"><?php the_time('F j, Y'); ?> <?php the_time('g:i a'); ?></span>
-                        <span class="author"><?php _e('Published by', 'projectic'); ?> <?php the_author_posts_link(); ?></span>
-                        <span class="comments"><?php comments_popup_link(__('Leave your thoughts', 'projectic'), __('1 Comment', 'projectic'), __('% Comments', 'projectic')); ?></span>
+                        <span class="author"><?php _e('Published by', 'wp_theme'); ?> <?php the_author_posts_link(); ?></span>
+                        <span class="comments"><?php comments_popup_link(__('Leave your thoughts', 'wp_theme'), __('1 Comment', 'wp_theme'), __('% Comments', 'wp_theme')); ?></span>
                         <!-- /post details -->
 
-                        <?php projectic_excerpt('projectic_wp_index'); // Build your custom callback length in functions.php    ?>
+                        <?php wp_theme_excerpt('wp_theme_wp_index'); // Build your custom callback length in functions.php    ?>
 
                         <br class="clear">
 

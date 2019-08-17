@@ -2,7 +2,7 @@
 /**
  * Index
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ get_header(); ?>
 
     <section>
       <header class="page-header mg-v-xl">
-        <h1 class="main-title"><?php _e('Latest Posts', 'projectic'); ?></h1>
+        <h1 class="main-title"><?php _e('Latest Posts', 'wp_theme'); ?></h1>
       </header>      
       
       <?php 

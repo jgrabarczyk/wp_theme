@@ -2,7 +2,7 @@
 /**
  * Search template
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,7 +16,7 @@ get_header(); ?>
       <header class="page-header mg-v-xl">
         <h1 class="main-title">
           <?php
-            echo sprintf(__('%s Search Results for ', 'projectic'), $wp_query->found_posts);
+            echo sprintf(__('%s Search Results for ', 'wp_theme'), $wp_query->found_posts);
             echo get_search_query();
           ?>
         </h1>

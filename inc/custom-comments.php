@@ -10,7 +10,7 @@ function my_remove_recent_comments_style() {
 
 
 // Custom Comments Callback
-function projecticcomments($comment, $args, $depth) {
+function wp_themecomments($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
     extract($args, EXTR_SKIP);
 

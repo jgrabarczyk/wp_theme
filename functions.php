@@ -1,15 +1,15 @@
 <?php
 /**
- *projectic functions and definitions
+ *wp_theme functions and definitions
  *
- * @packageprojectic
+ * @packagewp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$projectic_includes = array(
+$wp_theme_includes = array(
 	'/theme-settings.php',                     // Initialize theme default settings.
 	'/setup.php',                              // Theme setup and custom theme supports.
 	'/widgets.php',                            // Register widget area.
@@ -22,7 +22,7 @@ $projectic_includes = array(
 	'/custom-post_types.php',                   // Custom function specific for this theme.
 );
 
-foreach ( $projectic_includes as $file ) {
+foreach ( $wp_theme_includes as $file ) {
 	$filepath = locate_template( '/inc' . $file );
 	if ( ! $filepath ) {
 		trigger_error( sprintf( 'Error locating /inc%s for inclusion', $file ), E_USER_ERROR );

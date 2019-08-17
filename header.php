@@ -48,7 +48,7 @@
             </div>          
 
             <div id="mobile-menu-element" class="header-main-menu">                                    
-              <?php projectic_nav(); ?>             
+              <?php wp_theme_nav(); ?>             
             </div>  
 
           </nav>          

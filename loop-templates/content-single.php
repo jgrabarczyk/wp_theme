@@ -2,7 +2,7 @@
 /**
  * Partial template for content in single.php
  *
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
   <div class="post__img mg-t-xl">
-    <?= projectic_get_thumbnail('medium'); ?>
+    <?= wp_theme_get_thumbnail('medium'); ?>
   </div>      
 
   <div class="post__content">
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
       </h1>
 
       <div class="posted-on-details">
-        <?php projectic_posted_on(); ?>       
+        <?php wp_theme_posted_on(); ?>       
       </div>      
     </header>
       
@@ -31,11 +31,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
       
     <footer class="post__content--footer">
-      <?php the_tags(__('Tags: ', 'projectic'), ', ', '<br>'); ?>
+      <?php the_tags(__('Tags: ', 'wp_theme'), ', ', '<br>'); ?>
       
       <nav class="post-navigation">
-        <?php projectic_prev_post() ?>
-        <?php projectic_next_post() ?>
+        <?php wp_theme_prev_post() ?>
+        <?php wp_theme_next_post() ?>
       </nav>
 
       <?php edit_post_link(); ?>

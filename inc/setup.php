@@ -1,7 +1,7 @@
 <?php
 
-//projectic Blank navigation
-function projectic_nav() {
+//wp_theme Blank navigation
+function wp_theme_nav() {
     wp_nav_menu(
             array(
                 'theme_location' => 'header-menu',
@@ -23,7 +23,7 @@ function projectic_nav() {
             )
     );
 }
-function projectic_lang_nav() {
+function wp_theme_lang_nav() {
     wp_nav_menu(
             array(
                 'theme_location' => 'lang-menu',
@@ -46,7 +46,7 @@ function projectic_lang_nav() {
     );
 }
 
-function projectic_footer_menu(){
+function wp_theme_footer_menu(){
   wp_nav_menu(
     array(
         'theme_location' => 'footer-menu',
@@ -69,12 +69,12 @@ function projectic_footer_menu(){
 );
 }
 
-// Registerprojectic Blank Navigation
-function register_projectic_menu() {
+// Registerwp_theme Blank Navigation
+function register_wp_theme_menu() {
     register_nav_menus(array(// Using array to specify more menus if needed
-        'header-menu' => __('Header Menu', 'projectic'), // Main Navigation
-        'footer-offer' => __('Footer Oferta', 'projectic'), // Sidebar Navigation
-        'lang-menu' => __('Lang Menu', 'projectic') // Extra Navigation if needed (duplicate as many as you need!)
+        'header-menu' => __('Header Menu', 'wp_theme'), // Main Navigation
+        'footer-offer' => __('Footer Oferta', 'wp_theme'), // Sidebar Navigation
+        'lang-menu' => __('Lang Menu', 'wp_theme') // Extra Navigation if needed (duplicate as many as you need!)
     ));
 }
 
@@ -104,7 +104,7 @@ if (function_exists('add_theme_support')) {
     add_theme_support('automatic-feed-links');
 
     // Localisation Support
-    load_theme_textdomain('projectic', get_template_directory() . '/languages');
+    load_theme_textdomain('wp_theme', get_template_directory() . '/languages');
 }
 
 function render_search_form(){

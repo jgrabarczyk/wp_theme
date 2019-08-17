@@ -22,12 +22,12 @@
   }
 }
 
-[projectic-anime="left"]{
+[wp_theme-anime="left"]{
   @include transition__medium;
   position: relative;
   left: -150%;
 }
-[projectic-anime="right"]{
+[wp_theme-anime="right"]{
   @include transition__medium;
   position: relative;
   right: -150%;

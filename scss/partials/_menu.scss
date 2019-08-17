@@ -6,7 +6,7 @@ header.header .header-wrapper {
 	@include transition__medium;
 	@include defaultFlex;
 	min-height: $headerMinHeight;
-	align-items: center;
+	align-items: center; 
 	height: 91px;
 	&.sticky:not(.purple) {
 		box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);

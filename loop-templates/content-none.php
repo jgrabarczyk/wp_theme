@@ -2,7 +2,7 @@
 /**
  * The template part for displaying a message that posts cannot be found.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy *
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
   <header class="content-none-header">
-		<h2 class="mg-t-xl pd-h-sm fs-lg"><?php esc_html_e( 'Nothing Found', 'projectic' ); ?></h2>
+		<h2 class="mg-t-xl pd-h-sm fs-lg"><?php esc_html_e( 'Nothing Found', 'wp_theme' ); ?></h2>
 	</header>
 
 	<div class="page-content">
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         wp_kses( 
           __( 
             'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 
-            'projectic' 
+            'wp_theme' 
           ), 
           array( 
             'a' => array( 
@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php 
           esc_html_e( 
             'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 
-            'projectic' 
+            'wp_theme' 
           );
         ?>
       </p>
@@ -55,7 +55,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php 
           esc_html_e( 
             'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 
-            'projectic' 
+            'wp_theme' 
           ); 
         ?>
       </p>

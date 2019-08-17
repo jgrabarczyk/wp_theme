@@ -2,7 +2,7 @@
 /**
  * Partial template for content excerpts in loops
  *
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class('d-flex'); ?>>
     
     <div class="post-excerpt__img">
-      <?php echo projectic_get_thumbnail();?>
+      <?php echo wp_theme_get_thumbnail();?>
     </div>
 
     <div class="post-excerpt__content">
@@ -22,12 +22,12 @@ if ( ! defined( 'ABSPATH' ) ) {
           </h2>
 
           <div class="posted-on-details">
-            <?= projectic_posted_on() ?>    
+            <?= wp_theme_posted_on() ?>    
           </div>
       </header>
 
       <div class="post-excerpt--excerpt wp-content mg-b-xl">
-          <?php projectic_excerpt('projectic_wp_index');?>
+          <?php wp_theme_excerpt('wp_theme_wp_index');?>
       </div>
 
       <?php edit_post_link(); ?>

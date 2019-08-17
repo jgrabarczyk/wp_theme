@@ -2,7 +2,7 @@
 /**
  * Template for displaying category pages
  *
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

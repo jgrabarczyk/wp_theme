@@ -1,7 +1,7 @@
 <?php
 /*
- *  Author: Leszek Iwaniec |projectic
- *  URL:projectic.pl |projectic
+ *  Author: Leszek Iwaniec |wp_theme
+ *  URL:wp_theme.pl |wp_theme
  *  Custom functions, support, custom post types and more. 
  */
 
@@ -44,17 +44,17 @@ function add_slug_to_body_class($classes) {
 }
 
 // Custom Excerpts
-function projecticwp_index($length) { // Create 45 Word Callback for Index page Excerpts, call usingprojectic_excerpt('projectic_wp_index');
+function wp_themewp_index($length) { // Create 45 Word Callback for Index page Excerpts, call usingwp_theme_excerpt('wp_theme_wp_index');
     return 45;
 }
 
-// Create 40 Word Callback for Custom Post Excerpts, call usingprojectic_excerpt('projectic_wp_custom_post');
-function projecticwp_custom_post($length) {
+// Create 40 Word Callback for Custom Post Excerpts, call usingwp_theme_excerpt('wp_theme_wp_custom_post');
+function wp_themewp_custom_post($length) {
     return 40;
 }
 
 // Create the Custom Excerpts callback
-function projectic_excerpt($length_callback = '', $more_callback = '') {
+function wp_theme_excerpt($length_callback = '', $more_callback = '') {
     global $post;
     if (function_exists($length_callback)) {
         add_filter('excerpt_length', $length_callback);
@@ -70,9 +70,9 @@ function projectic_excerpt($length_callback = '', $more_callback = '') {
 }
 
 // Custom View Article link to Post
-function projectic_blank_view_article($more) { 
+function wp_theme_blank_view_article($more) { 
     global $post;
-    return '... <div class="view-article-container btn-default"><a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'projectic') . '</a></div>';
+    return '... <div class="view-article-container btn-default"><a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'wp_theme') . '</a></div>';
 }
 
 // Remove Admin bar
@@ -85,7 +85,7 @@ function remove_admin_bar() {
 }
 
 // Remove 'text/css' from our enqueued stylesheet
-function projectic_style_remove($tag) {
+function wp_theme_style_remove($tag) {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
 
@@ -96,7 +96,7 @@ function remove_thumbnail_dimensions($html) {
 }
 
 // Custom Gravatar in Settings > Discussion
-function projectic_gravatar($avatar_defaults) {
+function wp_theme_gravatar($avatar_defaults) {
     $myavatar = get_template_directory_uri() . '/assets/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
     return $avatar_defaults;
@@ -111,7 +111,7 @@ function enable_threaded_comments() {
     }
 }
 
-function projectic_get_thumbnail($size= NULL){
+function wp_theme_get_thumbnail($size= NULL){
     $thumb = is_null($size) ? get_the_post_thumbnail(): get_the_post_thumbnail(get_the_ID(), $size);
     $img_size = is_null($size) ? '' : 'img-'.$size;
     if (has_post_thumbnail()) :
@@ -130,7 +130,7 @@ function projectic_get_thumbnail($size= NULL){
             </a>';
     endif;
 }
-function projectic_bacgrounded_img(){
+function wp_theme_bacgrounded_img(){
   
     $default_url =  get_template_directory_uri() .'/assets/img/default.png';
     $url = (has_post_thumbnail()) ?  get_the_post_thumbnail_url() : $default_url ;
@@ -151,7 +151,7 @@ function projectic_bacgrounded_img(){
         </a>';
 }
 //post navigation
-function projectic_prev_post(){
+function wp_theme_prev_post(){
     $prev_post = get_previous_post();
     if($prev_post) {
         $prev_title = strip_tags(str_replace('"', '', $prev_post->post_title));
@@ -162,12 +162,12 @@ function projectic_prev_post(){
                 class="post-nav single-prev"
                 >
                 <div class="arrow left"></div>'
-                . __('Previous', 'projectic') .
+                . __('Previous', 'wp_theme') .
             '</a>'. 
             "\n";
     }
 }
-function projectic_next_post(){
+function wp_theme_next_post(){
     $next_post = get_next_post();
     if($next_post) {
         $next_title = strip_tags(str_replace('"', '', $next_post->post_title));
@@ -177,7 +177,7 @@ function projectic_next_post(){
             title="' . $next_title. '" 
             class="post-nav single-next"
             >' 
-            . __('Next', 'projectic') . 
+            . __('Next', 'wp_theme') . 
             '<div class="arrow right"></div>
         </a>'. 
         "\n";

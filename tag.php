@@ -2,7 +2,7 @@
 /**
  * Default template for tag loop 
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +15,7 @@ get_header(); ?>
         <section>
 
             <h1><?php
-                _e('Tag Archive: ', 'projectic');
+                _e('Tag Archive: ', 'wp_theme');
                 echo single_tag_title('', false);
                 ?></h1>
                 

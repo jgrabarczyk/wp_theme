@@ -7,7 +7,7 @@ var browserSync = require("browser-sync").create();
 
 gulp.task("default", function() {
 	return gulp
-		.src("wp-content/themes/projectic/scss/style.scss")
+		.src("scss/style.scss")
 		.pipe(sourcemaps.init())
 		.pipe(wait(500))
 		.pipe(
@@ -22,13 +22,17 @@ gulp.task("default", function() {
 		)
 		.pipe(
 			autoprefixer({
-				browsers: ["cover 99.5%"],
+				overrideBrowserslist: [
+					"last 1 version",
+					"> 1%",
+					"IE 10"
+				],
 				cascade: false,
 				grid: true
 			})
 		)
 		.pipe(sourcemaps.write("/maps"))
-    .pipe(gulp.dest("wp-content/themes/projectic/")) //ścieżka do pliku wynikowego (zapisywanego)
+    .pipe(gulp.dest("/")) //ścieżka do pliku wynikowego (zapisywanego)
     .pipe(wait(500))
 		.pipe(browserSync.stream());
 });
@@ -39,7 +43,7 @@ gulp.task("watch", function() {
 
 	gulp
 		.watch(
-			"wp-content/themes/projectic/scss/**/*.{scss, php, js}",
+			"scss/**/*.scss",
 			gulp.series("default")
 		)
 		.on("change", browserSync.reload);

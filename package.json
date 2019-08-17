@@ -10,6 +10,7 @@
     "gulp-wait": "^0.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-autoprefixer": "^6.1.0",
+    "autoprefixer": "^6.5.4",
     "browser-sync" : "^2.26.7"
   },
   "devDependencies": {
@@ -30,5 +31,11 @@
   "bugs": {
     "url": "https://github.com/jareckikck/wp_theme/issues"
   },
-  "homepage": "https://github.com/jareckikck/wp_theme#readme"
+  "homepage": "https://github.com/jareckikck/wp_theme#readme",
+  "browserslist": [
+    "last 1 version",
+    "> 1%",
+    "IE 10"
+  ]
+  
 }

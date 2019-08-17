@@ -1,6 +1,6 @@
 <?php 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function projectic_wp_pagination() {
+function wp_theme_wp_pagination() {
     global $wp_query;
     $big = 999999999;
     echo paginate_links(array(

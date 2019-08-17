@@ -2,7 +2,7 @@
 /**
  * Template for displaying archive pages
  *
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

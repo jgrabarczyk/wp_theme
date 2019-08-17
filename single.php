@@ -2,7 +2,7 @@
 /**
  * Default post template
  * 
- * @package projectic
+ * @package wp_theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
