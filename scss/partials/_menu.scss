@@ -1,5 +1,10 @@
+/*------------------------------------*\
+    Glboal
+\*------------------------------------*/
+$linkColor: color(blue, txt);
+
 header.header {
-  @include transition__medium;
+  @include transition(height, 1);
   z-index: 10;
   position: fixed;
   top: 0;
@@ -7,40 +12,36 @@ header.header {
   right: 0;
   height: 91px;
   &.sticky {
-    box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
-    height: 61px;
-    .logo {
-      .logo-img {
-        height: 100%;
-        max-height: 100%;
-        width: auto;
-      }
-    }
-    &::before {
-      pointer-events: none;
-      border-top-width: 0;
-    }
+    height: $headerMinHeight;
+    box-shadow: $boxShadow;
   }
 }
 
 .header-container {
-  @include transition__medium;
+  @include transition(height, 1);
   @extend .container;
-  background: rgba(color(white), 0.8);
+  background: rgba(color(white), 0.9);
   min-height: $headerMinHeight;
   align-items: center;
   height: 100%;
+  padding-top: spacing(xxs);
+  padding-bottom: spacing(xxs);
 }
 
 .logo {
-  @include transition__medium;
   position: relative;
-  z-index: 9999;
+  z-index: 99;
+  display: flex;
+  max-height: 100%;
+  height: 100%;
+  flex: 0 1 max-content;
   .logo-img {
-    @include transition__medium;
-    height: 55px;
+    max-height: 100%;
     max-width: 100%;
   }
+}
+nav.main-nav {
+  flex: 1 1 auto;
 }
 
 .wp-header-menu {
@@ -50,15 +51,13 @@ header.header {
   align-items: center;
   margin-left: auto;
   margin-right: 0;
-
   .menu-item {
     > a {
-      color: color(blue, txt);
-      font-family: raleway;
+      color: $linkColor;
       font-weight: bold;
-      font-size: 14px;
+      font-size: fs(sm);
       @include on-event() {
-        color: color(blue, hover);
+        color: $mainColorActiveHover;
       }
     }
   }
@@ -68,23 +67,24 @@ header.header {
   transform: rotate(180deg);
 }
 
-//desktop only
+/*------------------------------------*\
+	Desktop Only
+\*------------------------------------*/
 @media only screen and (min-width: $mobileBreakpoint) {
-
+  .main-nav {
+    padding: 0 $defaultPadding;
+  }
   .wp-header-menu {
     > .menu-item {
       position: relative;
       > a {
         @include transition(color, 0.5);
-				text-transform: uppercase;				
-				padding: 35px 17px;
-				// find way to extend in media queries
-				// @extend .pd-v-sm ;
-				// @extend .pd-h-m ;
+        text-transform: uppercase;
+        padding: $defaultPadding;
       }
 
       .mobile-nav-arrow {
-        @include transition__medium;
+				@include multiple-transition((transform,color),1);        
         display: none;
         color: $mainColorActive;
       }
@@ -95,9 +95,9 @@ header.header {
         background: #f4f6f7;
         top: calc(100% + 7px);
         width: max-content;
-        min-width: 280px;
+        min-width: auto;
         max-width: initial;
-        z-index: 3;
+        z-index: 11;
         opacity: 0;
         max-height: 1000px;
         overflow: hidden;
@@ -108,9 +108,8 @@ header.header {
         pointer-events: none;
         li {
           &.current-menu-item {
-            border-left-color: color(blue, hover);
+            border-left-color: $mainColorActiveHover;
             background: color(white);
-
             a {
               &::before {
                 display: none;
@@ -118,7 +117,7 @@ header.header {
             }
           }
           width: 100%;
-          padding: 15px 30px;
+          padding: $defaultPadding spacing(m);
           @include transition__medium;
           border-left: 3px solid transparent;
 
@@ -127,10 +126,10 @@ header.header {
           }
 
           @include on-event() {
-            background: #fff;
-            border-left-color: color(blue, hover);
+            background: color(white);
+            border-left-color: $mainColorActiveHover;
             a {
-              color: color(blue, txt);
+              color: $linkColor;
             }
           }
 
@@ -138,7 +137,7 @@ header.header {
             font-size: fs();
             font-weight: 400;
             @include on-event(true) {
-              color: color(blue, txt);
+              color: $linkColor;
             }
           }
         }
@@ -152,17 +151,17 @@ header.header {
       }
     }
   }
- 
+
   //main nav active
   .wp-header-menu li.current-menu-parent ~ div:not(.current-menu-item) > a,
   .wp-header-menu li.current_page_item ~ div:not(.current-menu-item) > a,
   .wp-header-menu li.current-menu-item > a,
   .wp-header-menu .current-menu-ancestor > a {
     position: relative;
-    color: #01b3cc;
+    color: $mainColorActive;
     &::before {
       content: "";
-      border: 2px solid #01b3cc;
+      border: 2px solid $mainColorActive;
       position: absolute;
       width: 100%;
       height: 30px;
@@ -175,73 +174,82 @@ header.header {
   //sub-menu styles
   li.menu-item ul.sub-menu > a {
     @include on-event(true) {
-      color: black;
+      color: color(black);
     }
     &.current-menu-item > a {
-      color: black;
+      color: color(black);
     }
   }
 }
-// mobile
+
+/*------------------------------------*\
+	Mobile Only
+\*------------------------------------*/
 @media only screen and (max-width: $mobileBreakpoint) {
-  .header-container {    
-    min-height: 0;
-    height: 61px;
+  .header-container {
     justify-content: space-between;
-    .logo, .search-form-wrapper,.nav{
-      flex: 0 1 1;
+    .logo,
+    .search-form-wrapper,
+    nav.main-nav {
+      flex: 0 1 auto;
     }
-    .logo{
+    .logo {
       order: 1;
     }
-    .search-form-wrapper{
+    .search-form-wrapper {
       order: 2;
     }
-    .nav{
+    nav.main-nav {
       order: 3;
     }
   }
 
   #mobile-menu-handler,
   #mobile-menu-handler * {
-		will-change: transform;
-		@include transition__medium;
+    will-change: transform;
+    @include multiple-transition((transform, background-color), 1);
   }
 
   #mobile-menu-handler {
-    display: block;    
-    z-index: 9999;
+    display: block;
+    z-index: 99;
     cursor: pointer;
-
+    @include on-event() {
+      div {
+        background-color: $mainColorActiveHover;
+      }
+    }
     div {
-      width: 26px;
+      width: spacing(m);
       height: 3px;
       border-radius: 2px;
       margin-bottom: 4px;
-      background-color: color(blue, hover);
+      background-color: $mainColorActive;
     }
 
     &.active {
       div {
-        background-color: #fff;
+        background-color: color(white);
       }
       #top {
         transform: translateY(4px) rotate(-135deg);
       }
-
       #middle {
         opacity: 0;
         transform: rotate(135deg);
       }
-
       #bottom {
         transform: translateY(-10px) rotate(-45deg);
+      }
+      @include on-event() {
+        div {
+          background-color: $mainColorActiveHover;
+        }
       }
     }
   }
 
   #menu-body {
-    @include transition__medium;
     will-change: transform, opacity;
     position: fixed;
     display: block;
@@ -250,72 +258,65 @@ header.header {
     right: -100%;
     width: 100%;
     opacity: 0;
-    padding: 50px 0px;
-		background-color: rgba(color(blue,main), 0.95);
+    padding: $defaultSpacing 0px;
+    background-color: rgba($mainColorActive, 0.95);
     overflow: auto;
-    z-index: 9998;
-
+    z-index: 98;
+    @include multiple-transition((right, opacity), 1);
     &.active {
       right: 0px;
       opacity: 1;
-      box-shadow: -1px 1px 5px 0px #4f4f4f;      
+      box-shadow: $boxShadow;
       overflow: hidden;
-    }      
-	}
+    }
+  }
 
-	.wp-header-menu {
-		@include transition__medium;
-		display: block;
-		border-bottom: none;
-		width: 100%;
-		position: relative;
-		transform: translateY(-50%);
-		top: 50%;
+  .wp-header-menu {
+    display: block;
+    border-bottom: none;
+    width: 100%;
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
 
-		> .menu-item {
-			@include transition__medium;
-			position: relative;
-			cursor: pointer;
-			font-size: fs("lg");
-			display: block;
-			width: 100%;
-			line-height: 1em;
-			text-align: center;
-			padding: $defaultPadding;
+    > .menu-item {
+      position: relative;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: $defaultPadding;
+      a {
+        @include transition(color, 1);
+        color: color(white);
+        font-size: fs("lg");
+        @include on-event() {
+          color: $mainColorActiveHover;
+        }
+      }
+      .sub-menu {
+        display: none;
+        padding-top: $defaultPadding;
+      }
 
-			a {
-				@include transition__medium;
-				color: #fff;
-				font-size: fs("lg");	
+      .mobile-nav-arrow {
+        @include multiple-transition((transform, color), 1);
+        display: inline-block;
+        color: color(white);
+        position: absolute;
+        right: $defaultPadding;
 
-				@include on-event() {
-					color: color(blue, hover);
-					@include transition__medium;
-				}
-			}
-			.sub-menu {
-				display: none;
-				padding-top: $defaultPadding;
-			}
-
-			.mobile-nav-arrow {
-				@include transition__medium;
-				display: inline-block;
-				color: #fff;
-				position: absolute;
-				right: 15px;
-				
-				&.rotate-arrow{
-					transform: rotate(180deg);
-					@include on-event(){
-						transform: scale(1.15) rotate(180deg);						
-					}
-				}
-				@include on-event(){
-					transform: scale(1.15);
-					color: color(blue,hover);
-				}
-			}
-		}
-	}
+        &.rotate-arrow {
+          transform: rotate(180deg);
+          @include on-event() {
+            transform: scale(1.15) rotate(180deg);
+          }
+        }
+        @include on-event() {
+          transform: scale(1.15);
+          color: $mainColorActiveHover;
+        }
+      }
+    }
+  }
 }
