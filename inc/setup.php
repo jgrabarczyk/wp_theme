@@ -4,7 +4,7 @@
 function wp_theme_render_nav() {
     wp_nav_menu(
             array(
-                'theme_location' => 'header-menu',
+                'theme_location' => 'wp-header-menu',
                 'menu' => '',
                 'container' => 'div',
                 'container_class' => 'menu-{menu slug}-container',
@@ -15,7 +15,7 @@ function wp_theme_render_nav() {
                 'fallback_cb' => 'wp_page_menu',
                 'before' => '',
                 'after' => '',
-                'items_wrap' => '<ul class="main-nav" >%3$s</ul>',
+                'items_wrap' => '<ul class="wp-header-menu" >%3$s</ul>',
                 'depth' => 0,
                 'walker' => ''
             )
@@ -68,7 +68,7 @@ function wp_theme_footer_menu(){
 // Registerwp_theme Blank Navigation
 function register_wp_theme_menu() {
     register_nav_menus(array(// Using array to specify more menus if needed
-        'header-menu' => __('Header Menu', 'wp_theme'), // Main Navigation
+        'wp-header-menu' => __('Header Menu', 'wp_theme'), // Main Navigation
         'footer-offer' => __('Footer Oferta', 'wp_theme'), // Sidebar Navigation
         'lang-menu' => __('Lang Menu', 'wp_theme') // Extra Navigation if needed (duplicate as many as you need!)
     ));

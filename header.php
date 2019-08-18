@@ -27,7 +27,7 @@
   
   <body <?php body_class(); ?>>    
     <header class="header" role="banner">                            
-      <div class="header-wrapper d-flex">
+      <div class="header-container d-flex">
 
         <div class="logo">
           <a href="<?= home_url(); ?>" 
@@ -45,11 +45,11 @@
         <nav class="nav">    
           <div id="mobile-menu-handler">
             <div id='top'></div>
-            <div id='middle'></div>
+            <div id='middle'></div> 
             <div id='bottom'></div>
           </div>          
 
-          <div id="menu-body" class="header-main-menu">                                    
+          <div id="menu-body">                                    
             <?php wp_theme_render_nav(); ?>             
           </div>  
         </nav>          

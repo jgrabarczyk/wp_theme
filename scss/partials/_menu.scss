@@ -1,368 +1,324 @@
 header.header {
-	z-index: 10;
+  @include transition__medium;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 91px;
+  &.sticky {
+    box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
+    height: 61px;
+    .logo {
+      img {
+        height: 23px;
+        width: auto;
+      }
+    }
+    &::before {
+      pointer-events: none;
+      border-top-width: 0;
+    }
+  }
 }
 
-header.header .header-wrapper {
-	@include transition__medium;
-	@include defaultFlex;
-	min-height: $headerMinHeight;
-	align-items: center; 
-	height: 91px;
-	&.sticky:not(.purple) {
-		box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
-	}
-	&.sticky {
-		height: 61px;
-		.logo {
-			img {
-				height: 23px;
-				width: auto;
-			}
-		}	
-		&::before {
-			pointer-events: none;
-			border-top-width: 0;
-		}
-	}
-	#menu-body .main-nav {
-		flex: 0 1 100%;
-	}
-	.main-nav {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		margin-left: auto;
-		margin-right: 0;
-		.nav {
-			flex: 0 1 100%;
-			display: flex;
-			.header-main-menu {
-				flex: 0 1 100%;
-				display: flex;
-				justify-content: flex-end;
-			}
-		}
-	}
-	.container-header {
-		> .main-nav {
-			flex: 0 1 calc(100% - 240px);
-		}
-	}
-	.logo {
-		position: relative;
-		z-index: 9999;
-		@include transition__medium;
-		img {
-			@include transition__medium;
-			height: 55px;
-			max-width: 100%;
-		}
-	}
+.header-container {
+  @include transition__medium;
+  @extend .container;
+  background: rgba(color(white), 0.8);
+  min-height: $headerMinHeight;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  @include transition__medium;
+  position: relative;
+  z-index: 9999;
+  .logo-img {
+    @include transition__medium;
+    height: 55px;
+    max-width: 100%;
+  }
+}
+
+.wp-header-menu {
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+
+  .menu-item {
+    > a {
+      color: color(blue, txt);
+      font-family: raleway;
+      font-weight: bold;
+      font-size: 14px;
+      @include on-event() {
+        color: color(blue, hover);
+      }
+    }
+  }
 }
 
 .rotate-arrow {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-header.header ul.main-nav li {
-	> a {
-		color: color(blue, txt);
-		font-family: raleway;
-		font-weight: bold;
-		font-size: 14px;
-		@include on-event() {
-			color: color(blue, hover);
-		}
-	}
-}
-@media only screen and (min-width: 1024px) {
-	// nav every element
-	header.header ul.main-nav li {
-		a {
-			@include transition(color, 0.5);
-			text-transform: uppercase;
-			position: relative;
-			padding: 0 5px;
-		}
-	}
+//desktop only
+@media only screen and (min-width: $mobileBreakpoint) {
+  ul.wp-header-menu {
+    > .menu-item {
+      position: relative;
+      > a {
+        @include transition(color, 0.5);
+				text-transform: uppercase;				
+				padding: 35px 17px;
+				// find way to extend in media queries
+				// @extend .pd-v-sm ;
+				// @extend .pd-h-m ;
+      }
 
-  // main  nav current item
-  .menu-item-has-children{
-		position: relative;
-	}
-  // hover class
-	header.header ul.main-nav li.current-menu-parent:hover > a,
-	header.header ul.main-nav li.current_page_item:hover a,
-	header.header ul.main-nav li.current-menu-item:hover a {
+      .mobile-nav-arrow {
+        @include transition__medium;
+        display: none;
+        color: $mainColorActive;
+      }
+      .sub-menu {
+        list-style: none;
+        display: block;
+        position: absolute;
+        background: #f4f6f7;
+        top: calc(100% + 7px);
+        width: max-content;
+        min-width: 280px;
+        max-width: initial;
+        z-index: 3;
+        opacity: 0;
+        max-height: 1000px;
+        overflow: hidden;
+        transform: translateY(20px);
+        transform-origin: 50% 0;
+        -webkit-transform-origin: 50% 0;
+        transition: 500ms;
+        pointer-events: none;
+        li {
+          &.current-menu-item {
+            border-left-color: color(blue, hover);
+            background: color(white);
+
+            a {
+              &::before {
+                display: none;
+              }
+            }
+          }
+          width: 100%;
+          padding: 15px 30px;
+          @include transition__medium;
+          border-left: 3px solid transparent;
+
+          &:not(:first-child) {
+            border-top: 1px solid #dfe5e8;
+          }
+
+          @include on-event() {
+            background: #fff;
+            border-left-color: color(blue, hover);
+            a {
+              color: color(blue, txt);
+            }
+          }
+
+          a {
+            font-size: fs();
+            font-weight: 400;
+            @include on-event(true) {
+              color: color(blue, txt);
+            }
+          }
+        }
+      }
+      @include on-event() {
+        .sub-menu {
+          pointer-events: all;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
   }
-  
-	//main nav active 
-	
-	header.header ul.main-nav li.current-menu-parent ~ div:not(.current-menu-item ) > a,
-	header.header ul.main-nav li.current_page_item ~ div:not(.current-menu-item ) > a,
-	header.header ul.main-nav li.current-menu-item > a {
-		position: relative;
-		color: #01b3cc;
-		&::before {
-			content: "";
-			border: 2px solid #01b3cc;
-			position: absolute;
-			width: 100%;
-			height: 30px;
-			top: 50%;
-			transform: translatey(-50%);
-			left: 0;
-		}
-	}
+  // hover class
+  // .wp-header-menu .menu-item-has-children > a,
+  // .wp-header-menu li.current-menu-parent:hover > a,
+  // .wp-header-menu li.current_page_item:hover a,
+  // .wp-header-menu li.current-menu-item:hover a {
+  // global hover applied
+  // }
 
-	header.header ul li ul.sub-menu > a {
-		@include on-event(true) {
-			color: black;
-		}
-		&.current-menu-item > a {
-			color: black;
-		}
-	}
+  //main nav active
+  .wp-header-menu li.current-menu-parent ~ div:not(.current-menu-item) > a,
+  .wp-header-menu li.current_page_item ~ div:not(.current-menu-item) > a,
+  .wp-header-menu li.current-menu-item > a,
+  .wp-header-menu .current-menu-ancestor > a {
+    position: relative;
+    color: #01b3cc;
+    &::before {
+      content: "";
+      border: 2px solid #01b3cc;
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      top: 50%;
+      transform: translatey(-50%);
+      left: 0;
+    }
+  }
 
-	#menu-body {
-		ul.main-nav {
-			> li {
-				> a {
-					padding: 35px 17px;
-				}
-
-				&.current-menu-item > a span {
-					bottom: -10px;
-				}
-				.mobile-nav-arrow {
-					@include transition__medium;
-					display: none;
-					color: $mainColorActive;
-				}
-				.sub-menu {
-					list-style: none;
-					display: block;
-					position: absolute;
-					background: #f4f6f7;
-					top: calc(100% - 3px);
-					width: max-content;
-					min-width: 280px;
-					max-width: initial;
-					z-index: 3;
-					opacity: 0;
-					max-height: 1000px;
-					overflow: hidden;
-					transform: translateY(20px);
-					transform-origin: 50% 0;
-					-webkit-transform-origin: 50% 0;
-					transition: 500ms;
-					pointer-events: none;
-					li {
-						&.current-menu-item {
-							border-left-color: color(blue, hover);
-							background: color(white);
-
-							a {
-								&::before {
-									display: none;
-								}
-							}
-						}
-						width: 100%;
-						padding: 15px 30px;
-						@include transition__medium;
-						border-left: 3px solid transparent;
-						&:not(:first-child) {
-							border-top: 1px solid #dfe5e8;
-						}
-						&:hover {
-							background: #fff;
-							border-left-color: color(blue, hover);
-							a {
-								color: color(blue, txt);
-							}
-						}
-						a {
-							font-size: fs();
-							font-weight: 400;
-							color: color(blue, txt);
-							&:hover {
-								color: color(blue, txt);
-							}
-						}
-					}
-				}
-				&:hover {
-					.sub-menu {
-						pointer-events: all;
-						max-height: 1000px;
-						opacity: 1;
-						transform: translateY(0);
-					}
-				}
-			}
-		}
-	}
+  //sub-menu styles
+  li.menu-item ul.sub-menu > a {
+    @include on-event(true) {
+      color: black;
+    }
+    &.current-menu-item > a {
+      color: black;
+    }
+  }
 }
-@media only screen and (max-width: 1024px) {
-	header.header .header-wrapper {
-		display: block;
-		min-height: 0;
-		height: 61px;
-		top: 0;
-		.logo {
-			z-index: 99999;
-			img {
-				height: 23px;
-			}
-		}
-		> nav.nav {
-			display: block;
+// mobile
+@media only screen and (max-width: $mobileBreakpoint) {
+  .header-container {
+    display: block;
+    min-height: 0;
+    height: 61px;
+    top: 0;
+    .logo {
+      z-index: 99999;
+      .logo-img {
+        height: 23px;
+      }
+    }
+  }
 
-			ul {
-				display: block;
-			}
-		}
-	}
-
-	#mobile-menu-handler,
-	#mobile-menu-handler * {
+  #mobile-menu-handler,
+  #mobile-menu-handler * {
 		will-change: transform;
+		@include transition__medium;
+  }
+
+  #mobile-menu-handler {
+    display: block;
+    position: absolute;
+    z-index: 9999;
+    top: $defaultPadding;
+    right: $defaultPadding;
+    cursor: pointer;
+
+    div {
+      width: 26px;
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 4px;
+      background-color: color(blue, hover);
+    }
+
+    &.active {
+      div {
+        background-color: #fff;
+      }
+      #top {
+        transform: translateY(4px) rotate(-135deg);
+      }
+
+      #middle {
+        opacity: 0;
+        transform: rotate(135deg);
+      }
+
+      #bottom {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+  }
+
+  #menu-body {
+    @include transition__medium;
+    will-change: transform, opacity;
+    position: fixed;
+    display: block;
+    top: 0px;
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    opacity: 0;
+    padding: 50px 0px;
+		background-color: rgba(color(blue,main), 0.95);
+    overflow: auto;
+    z-index: 9998;
+
+    &.active {
+      right: 0px;
+      opacity: 1;
+      box-shadow: -1px 1px 5px 0px #4f4f4f;      
+      overflow: hidden;
+    }      
 	}
 
-	#mobile-menu-handler {
+	.wp-header-menu {
 		@include transition__medium;
 		display: block;
-		position: absolute;
-		z-index: 9999;
-		top: $defaultPadding;
-		right: $defaultPadding;
-		cursor: pointer;
-
-		div {
-			@include transition__medium;
-			width: 26px;
-			height: 3px;
-			border-radius: 2px;
-			margin-bottom: 4px;
-			background-color: color(blue, hover);
-		}
-
-		&.active {
-			div {
-				background-color: #fff;
-			}
-			#top {
-				transform: translateY(4px) rotate(-135deg);
-			}
-
-			#middle {
-				opacity: 0;
-				transform: rotate(135deg);
-			}
-
-			#bottom {
-				transform: translateY(-10px) rotate(-45deg);
-			}
-		}
-	}
-
-	#menu-body {
-		@include transition__medium;
-		will-change: transform, opacity;
-		position: fixed;
-		z-index: 9998;
-		overflow: auto;
-		top: 0px;
-		bottom: 0;
-		right: -100%;
+		border-bottom: none;
 		width: 100%;
-		opacity: 0;
-		padding: 20px 0px;
-		background-color: rgba(33, 35, 49, 0.95);
-		color: #4a4a49;
-		display: block;
+		position: relative;
+		transform: translateY(-50%);
+		top: 50%;
 
-		&.active {
-			right: 0px;
-			opacity: 1;
-			box-shadow: -1px 1px 5px 0px #4f4f4f;
-			z-index: 9998;
-			overflow: hidden;
-		}
-		#lang-menu {
-			flex: 0 1 100%;
-		}
-		> ul.main-nav {
+		> .menu-item {
 			@include transition__medium;
-			display: block;
-
-			border-bottom: none;
-			width: 100%;
 			position: relative;
-			transform: translateY(-50%);
-			top: 50%;
+			cursor: pointer;
+			font-size: fs("lg");
+			display: block;
+			width: 100%;
+			line-height: 1em;
+			text-align: center;
+			padding: $defaultPadding;
 
-			> li {
+			a {
 				@include transition__medium;
-				position: relative;
-				cursor: pointer;
-				font-size: fs("lg");
-				display: block;
-				width: 100%;
-				line-height: 1em;
-				text-align: center;
-				.sub-menu {
-					display: none;
-					padding-left: $defaultPadding;
-				}
+				color: #fff;
+				font-size: fs("lg");	
 
-				.mobile-nav-arrow {
+				@include on-event() {
+					color: color(blue, hover);
 					@include transition__medium;
-					display: inline-block;
-					color: #fff;
-					position: absolute;
-					right: $defaultPadding;
-					top: 25px;
-				}
-				a {
-					color: #fff;
-					@include transition__medium;
-					padding: $defaultPadding;
-					height: 60px;
-					&.open {
-						&,
-						&:hover {
-							color: color(blue, hover);
-						}
-					}
-					&:hover {
-						color: #fff;
-						@include transition__medium;
-						&:after {
-							bottom: -1px;
-						}
-					}
 				}
 			}
-		}
-	}
+			.sub-menu {
+				display: none;
+				padding-top: $defaultPadding;
+			}
 
-	.header-fixed #menu-body > ul {
-		@include transition__medium;
-		top: 310px;
-	}
-
-	header.header-fixed #mobile-menu-handler {
-		top: 22px;
-		@include transition__medium;
-	}
-
-	#menu-body > ul > li {
-		margin-left: 0;
-		a {
-			font-size: fs("lg");
-			display: inline-block;
+			.mobile-nav-arrow {
+				@include transition__medium;
+				display: inline-block;
+				color: #fff;
+				position: absolute;
+				right: 15px;
+				
+				&.rotate-arrow{
+					transform: rotate(180deg);
+					@include on-event(){
+						transform: scale(1.15) rotate(180deg);						
+					}
+				}
+				@include on-event(){
+					transform: scale(1.15);
+					color: color(blue,hover);
+				}
+			}
 		}
 	}
 }

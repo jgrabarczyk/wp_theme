@@ -1,5 +1,7 @@
 //set up ur theme here
 $maxColSize: 12;
+
+//rebuild breakpoints to use it in @media queries
 $breakpoints: (
 	991: $maxColSize,
 	768: $maxColSize,
@@ -29,9 +31,9 @@ $colormap: (
 		txt: #333
 	),
 	blue: (
-		main: #001eff,
-		hover: #01b3cc,
-		txt: #3c3950
+		main: hsl(187, 50%, 40%),
+		hover: hsl(187, 99%, 40%),
+		txt: hsl(187, 25%, 40%)
 	),	
 );
 
@@ -56,6 +58,6 @@ $mainColor: color(black, txt);
 $mainColorActive: color(blue);
 //alternate hovers / actives
 $mainColorActiveHover: color(blue, hover);
-
+$mobileBreakpoint: 991px;
 
 
