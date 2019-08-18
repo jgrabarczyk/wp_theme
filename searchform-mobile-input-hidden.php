@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="searchform-mobile-input-hidden" class="search-form-wrapper">
   <div id="searchform-toggle" class="searchform-toggle">
+		<?php _e('Click to search', 'wp_theme'); ?>
     <i class="fa fa-search"></i>
   </div>
   
