@@ -1,0 +1,46 @@
+//target to style both searchforms wrappers
+.search-form-wrapper {
+  .search-form {
+    display: flex;
+    .search-input{
+      @extend .btn;
+      @extend .btn__small;
+      @extend .btn__blue--o;
+    }
+    .search-submit{
+      @extend .btn;
+      @extend .btn__small;
+      @extend .btn__blue;
+    }
+  }
+}
+
+#searchform-toggle {
+  @extend .btn;
+  @extend .btn__blue--o;
+  max-width: 50px;
+  min-width: 1px;
+  padding: 15px;
+  display: none;
+}
+
+//mobile
+@media only screen and (max-width: $mobileBreakpoint) {
+  #searchform-mobile-input-hidden {
+    position: relative;
+    .search-form {
+      position: absolute;
+      transform: translate(-50%, 0);
+      @include transition(opacity, 1.5);
+      opacity: 0;
+      pointer-events: none;
+      &.active{
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+    #searchform-toggle {
+      display: block;
+    }
+  }  
+}

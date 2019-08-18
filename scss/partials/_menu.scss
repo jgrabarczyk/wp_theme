@@ -10,8 +10,9 @@ header.header {
     box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
     height: 61px;
     .logo {
-      img {
-        height: 23px;
+      .logo-img {
+        height: 100%;
+        max-height: 100%;
         width: auto;
       }
     }
@@ -69,7 +70,8 @@ header.header {
 
 //desktop only
 @media only screen and (min-width: $mobileBreakpoint) {
-  ul.wp-header-menu {
+
+  .wp-header-menu {
     > .menu-item {
       position: relative;
       > a {
@@ -150,14 +152,7 @@ header.header {
       }
     }
   }
-  // hover class
-  // .wp-header-menu .menu-item-has-children > a,
-  // .wp-header-menu li.current-menu-parent:hover > a,
-  // .wp-header-menu li.current_page_item:hover a,
-  // .wp-header-menu li.current-menu-item:hover a {
-  // global hover applied
-  // }
-
+ 
   //main nav active
   .wp-header-menu li.current-menu-parent ~ div:not(.current-menu-item) > a,
   .wp-header-menu li.current_page_item ~ div:not(.current-menu-item) > a,
@@ -189,16 +184,21 @@ header.header {
 }
 // mobile
 @media only screen and (max-width: $mobileBreakpoint) {
-  .header-container {
-    display: block;
+  .header-container {    
     min-height: 0;
     height: 61px;
-    top: 0;
-    .logo {
-      z-index: 99999;
-      .logo-img {
-        height: 23px;
-      }
+    justify-content: space-between;
+    .logo, .search-form-wrapper,.nav{
+      flex: 0 1 1;
+    }
+    .logo{
+      order: 1;
+    }
+    .search-form-wrapper{
+      order: 2;
+    }
+    .nav{
+      order: 3;
     }
   }
 
@@ -209,11 +209,8 @@ header.header {
   }
 
   #mobile-menu-handler {
-    display: block;
-    position: absolute;
+    display: block;    
     z-index: 9999;
-    top: $defaultPadding;
-    right: $defaultPadding;
     cursor: pointer;
 
     div {

@@ -19,7 +19,11 @@
   &--shadow{
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
 
-  }
+	}
+	&__small{
+		padding: 5px 10px;
+		min-width: 1px;
+	}
 }
 
 .btn:hover {
@@ -39,8 +43,8 @@
 		&--o {
 			background: white;
 			color: color($color, txt);
-      // border: 1px solid color($color, main);
-      border: 2px solid transparent;
+      border: 1px solid color($color, main);
+      // border: 2px solid transparent;
 			&:hover {
 				color: white;
 				border-color:  color($color, hover);

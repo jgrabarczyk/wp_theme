@@ -1334,7 +1334,7 @@ strong {
  * Looking for variables source? 
  * Check: -> scss/modules/_variables.scss 
  */
-.btn {
+.btn, .search-form-wrapper .search-form .search-input, .search-form-wrapper .search-form .search-submit, #searchform-toggle {
   display: inline-block;
   text-decoration: none;
   font-size: 14px;
@@ -1354,7 +1354,11 @@ strong {
   -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
 
-.btn:hover {
+.btn__small, .search-form-wrapper .search-form .search-input, .search-form-wrapper .search-form .search-submit {
+  padding: 5px 10px;
+  min-width: 1px; }
+
+.btn:hover, .search-form-wrapper .search-form .search-input:hover, .search-form-wrapper .search-form .search-submit:hover, #searchform-toggle:hover {
   background: #bbb; }
 
 .btn__white {
@@ -1370,7 +1374,7 @@ strong {
 .btn__white--o {
   background: white;
   color: #fff;
-  border: 2px solid transparent; }
+  border: 1px solid #fff; }
 
 .btn__white--o:hover {
   color: white;
@@ -1391,7 +1395,7 @@ strong {
 .btn__black--o {
   background: white;
   color: #333;
-  border: 2px solid transparent; }
+  border: 1px solid #010101; }
 
 .btn__black--o:hover {
   color: white;
@@ -1399,22 +1403,22 @@ strong {
   background: #444;
   color: black, hover; }
 
-.btn__blue {
+.btn__blue, .search-form-wrapper .search-form .search-submit {
   background: #01b3cb;
   color: #fff;
   border: 2px solid transparent; }
 
-.btn__blue:hover {
+.btn__blue:hover, .search-form-wrapper .search-form .search-submit:hover {
   background: #fff;
   color: #01b3cb;
   border-color: #01b3cb; }
 
-.btn__blue--o {
+.btn__blue--o, .search-form-wrapper .search-form .search-input, #searchform-toggle {
   background: white;
   color: #4d7a80;
-  border: 2px solid transparent; }
+  border: 1px solid #338d99; }
 
-.btn__blue--o:hover {
+.btn__blue--o:hover, .search-form-wrapper .search-form .search-input:hover, #searchform-toggle:hover {
   color: white;
   border-color: #01b3cb;
   background: #01b3cb;
@@ -1659,8 +1663,9 @@ header.header.sticky {
   box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
   height: 61px; }
 
-header.header.sticky .logo img {
-  height: 23px;
+header.header.sticky .logo .logo-img {
+  height: 100%;
+  max-height: 100%;
   width: auto; }
 
 header.header.sticky::before {
@@ -1725,19 +1730,19 @@ header.header.sticky::before {
   transform: rotate(180deg); }
 
 @media only screen and (min-width: 991px) {
-  ul.wp-header-menu > .menu-item {
+  .wp-header-menu > .menu-item {
     position: relative; }
-  ul.wp-header-menu > .menu-item > a {
+  .wp-header-menu > .menu-item > a {
     -webkit-transition: 0.5s color cubic-bezier(0.215, 0.61, 0.355, 1);
     transition: 0.5s color cubic-bezier(0.215, 0.61, 0.355, 1);
     text-transform: uppercase;
     padding: 35px 17px; }
-  ul.wp-header-menu > .menu-item .mobile-nav-arrow {
+  .wp-header-menu > .menu-item .mobile-nav-arrow {
     -webkit-transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
     transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
     display: none;
     color: #338d99; }
-  ul.wp-header-menu > .menu-item .sub-menu {
+  .wp-header-menu > .menu-item .sub-menu {
     list-style: none;
     display: block;
     position: absolute;
@@ -1761,30 +1766,30 @@ header.header.sticky::before {
     -webkit-transition: 500ms;
     transition: 500ms;
     pointer-events: none; }
-  ul.wp-header-menu > .menu-item .sub-menu li {
+  .wp-header-menu > .menu-item .sub-menu li {
     width: 100%;
     padding: 15px 30px;
     -webkit-transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
     transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1);
     border-left: 3px solid transparent; }
-  ul.wp-header-menu > .menu-item .sub-menu li.current-menu-item {
+  .wp-header-menu > .menu-item .sub-menu li.current-menu-item {
     border-left-color: #01b3cb;
     background: #fff; }
-  ul.wp-header-menu > .menu-item .sub-menu li.current-menu-item a::before {
+  .wp-header-menu > .menu-item .sub-menu li.current-menu-item a::before {
     display: none; }
-  ul.wp-header-menu > .menu-item .sub-menu li:not(:first-child) {
+  .wp-header-menu > .menu-item .sub-menu li:not(:first-child) {
     border-top: 1px solid #dfe5e8; }
-  ul.wp-header-menu > .menu-item .sub-menu li:hover, ul.wp-header-menu > .menu-item .sub-menu li:active, ul.wp-header-menu > .menu-item .sub-menu li:focus {
+  .wp-header-menu > .menu-item .sub-menu li:hover, .wp-header-menu > .menu-item .sub-menu li:active, .wp-header-menu > .menu-item .sub-menu li:focus {
     background: #fff;
     border-left-color: #01b3cb; }
-  ul.wp-header-menu > .menu-item .sub-menu li:hover a, ul.wp-header-menu > .menu-item .sub-menu li:active a, ul.wp-header-menu > .menu-item .sub-menu li:focus a {
+  .wp-header-menu > .menu-item .sub-menu li:hover a, .wp-header-menu > .menu-item .sub-menu li:active a, .wp-header-menu > .menu-item .sub-menu li:focus a {
     color: #4d7a80; }
-  ul.wp-header-menu > .menu-item .sub-menu li a {
+  .wp-header-menu > .menu-item .sub-menu li a {
     font-size: 16px;
     font-weight: 400; }
-  ul.wp-header-menu > .menu-item .sub-menu li a, ul.wp-header-menu > .menu-item .sub-menu li a:hover, ul.wp-header-menu > .menu-item .sub-menu li a:active, ul.wp-header-menu > .menu-item .sub-menu li a:focus {
+  .wp-header-menu > .menu-item .sub-menu li a, .wp-header-menu > .menu-item .sub-menu li a:hover, .wp-header-menu > .menu-item .sub-menu li a:active, .wp-header-menu > .menu-item .sub-menu li a:focus {
     color: #4d7a80; }
-  ul.wp-header-menu > .menu-item:hover .sub-menu, ul.wp-header-menu > .menu-item:active .sub-menu, ul.wp-header-menu > .menu-item:focus .sub-menu {
+  .wp-header-menu > .menu-item:hover .sub-menu, .wp-header-menu > .menu-item:active .sub-menu, .wp-header-menu > .menu-item:focus .sub-menu {
     pointer-events: all;
     opacity: 1;
     -webkit-transform: translateY(0);
@@ -1817,14 +1822,32 @@ header.header.sticky::before {
 
 @media only screen and (max-width: 991px) {
   .header-container {
-    display: block;
     min-height: 0;
     height: 61px;
-    top: 0; }
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .header-container .logo, .header-container .search-form-wrapper, .header-container .nav {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 1;
+    -ms-flex: 0 1 1;
+    flex: 0 1 1; }
   .header-container .logo {
-    z-index: 99999; }
-  .header-container .logo .logo-img {
-    height: 23px; }
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1; }
+  .header-container .search-form-wrapper {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2; }
+  .header-container .nav {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3; }
   #mobile-menu-handler,
   #mobile-menu-handler * {
     will-change: transform;
@@ -1832,10 +1855,7 @@ header.header.sticky::before {
     transition: 1s all cubic-bezier(0.215, 0.61, 0.355, 1); }
   #mobile-menu-handler {
     display: block;
-    position: absolute;
     z-index: 9999;
-    top: 15px;
-    right: 15px;
     cursor: pointer; }
   #mobile-menu-handler div {
     width: 26px;
@@ -1953,6 +1973,36 @@ header.header.sticky::before {
 
 .post__content {
   margin-top: 30px; }
+
+.search-form-wrapper .search-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+#searchform-toggle {
+  max-width: 50px;
+  min-width: 1px;
+  padding: 15px;
+  display: none; }
+
+@media only screen and (max-width: 991px) {
+  #searchform-mobile-input-hidden {
+    position: relative; }
+  #searchform-mobile-input-hidden .search-form {
+    position: absolute;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-transition: 1.5s opacity cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: 1.5s opacity cubic-bezier(0.215, 0.61, 0.355, 1);
+    opacity: 0;
+    pointer-events: none; }
+  #searchform-mobile-input-hidden .search-form.active {
+    opacity: 1;
+    pointer-events: all; }
+  #searchform-mobile-input-hidden #searchform-toggle {
+    display: block; } }
 
 /* global box-sizing */
 *,
