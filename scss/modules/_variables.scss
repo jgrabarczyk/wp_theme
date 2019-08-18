@@ -1,16 +1,33 @@
-//set up ur theme here
+/*------------------------------------*\
+	Set up theme here
+\*------------------------------------*/
+//main header min size
+$headerMinHeight: 61px;
+
+/*-- Grid ----------------------------*/
+
+//default wrapper width
+$wrapperWidth: 1200px;
+//cell spacing - default 0 
+$gridGutterSize: 0;
+//cell numbers
 $maxColSize: 12;
 
-//rebuild breakpoints to use it in @media queries
+//@TODO rebuild breakpoints to use it in @media queries
 $breakpoints: (
 	991: $maxColSize,
 	768: $maxColSize,
 	580: $maxColSize,
 	480: $maxColSize
 );
+//main breakpoint
+$mobileBreakpoint: 991px;
+/*-- Grid END ------------------------*/
 
+/*-- Spacing -------------------------*/
 $spacing: (
-  0: 0, 
+	0: 0, 
+	xxs: 5,
   xs: 10, 
   sm: 15,   
   m: 25,  
@@ -18,25 +35,39 @@ $spacing: (
   xl: 50, 
   xxl: 100  
 );
+//shorthands for spacing etc
+$defaultSpacing: spacing(xl); //50
+$defaultPadding: spacing(sm); //15
+/*-- Spacing END ---------------------*/
 
+/*-- Colors --------------------------*/
 $colormap: (	
 	white: (
-		main: #fff,
-		hover: #eee,
-		txt: #fff
+		main: hsl(0, 0%, 100%),
+		hover: hsl(0, 0%, 80%),
+		txt: hsl(0, 0%, 75%)
 	), 
 	black: ( 
-		main: #010101,
-		hover: #444,
-		txt: #333
+		main: hsl(0, 0%, 0%),
+		hover: hsl(0, 0%, 20%),
+		txt: hsl(0, 0%, 20%)
 	),
 	blue: (
-		main: hsl(187, 50%, 40%),
-		hover: hsl(187, 99%, 40%),
-		txt: hsl(187, 25%, 40%)
+		main: hsl(187, 100%, 40%),
+		hover: hsl(187, 50%, 40%),
+		txt: hsl(187, 50%, 50%)
 	),	
 );
+// base for font txt
+$mainColor: color(black, txt);
+//base for links 
+$mainColorActive: color(blue);
+//base for hovers / actives
+$mainColorActiveHover: color(blue, hover);
+$boxShadow:  -1px 1px 5px 0px #4f4f4f;
+/*-- Colors END ----------------------*/
 
+/*-- Fontsizes -----------------------*/
 $fontsize: (
 	sm: 14px,
 	init: 16px,
@@ -46,18 +77,8 @@ $fontsize: (
 	xxl: 60px
 );
 
-$wrapperWidth: 1200px;
-$headerMinHeight: 30px;
-$defaultSpacing: 50px;
-$defaultPadding: 15px;
-$gridGutterSize: 0;
 
-// font color, borders
-$mainColor: color(black, txt);
-//base hovers / actives
-$mainColorActive: color(blue);
-//alternate hovers / actives
-$mainColorActiveHover: color(blue, hover);
-$mobileBreakpoint: 991px;
+/*-- Fontsizes END -------------------*/
+
 
 
