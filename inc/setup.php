@@ -103,6 +103,10 @@ if (function_exists('add_theme_support')) {
     load_theme_textdomain('wp_theme', get_template_directory() . '/languages');
 }
 
-function wp_theme_render_search_form(){
-  get_template_part('searchform');
+function wp_theme_render_search_form($mobile_input_hidden = false){
+    if($mobile_input_hidden){
+        get_template_part('searchform', 'mobile-input-hidden');
+    }else{
+        get_template_part('searchform');
+    }
 }

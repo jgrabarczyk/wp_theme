@@ -54,7 +54,7 @@
           </div>  
         </nav>          
         
-        <?php wp_theme_render_search_form(); ?>        
+        <?php wp_theme_render_search_form(true); ?>        
 
       </div>
     </header>
