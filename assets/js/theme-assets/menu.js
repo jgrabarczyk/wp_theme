@@ -12,7 +12,7 @@
     const 
       $window = $(window),
       $header = $(".header.header"); 
-      $menuWrapper = $(".nav"),
+      $menuWrapper = $(".main-nav"),
       $menuBox = $("#menu-body"),
       $menuBtn = $("#mobile-menu-handler"),
 
@@ -58,7 +58,7 @@
     }
 
     function toggleMainMenu() {
-      $(this).toggleClass("active");
+      $menuBtn.toggleClass("active");
       $menuBox.toggleClass("active");
     }
 
