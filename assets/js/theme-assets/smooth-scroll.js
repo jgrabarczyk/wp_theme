@@ -1,4 +1,4 @@
-let menuOffset = jQuery('.main-nav').height() + 25; // menu selector + custom additional space
+let menuOffset = jQuery('.wp-header-menu').height() + 25; // menu selector + custom additional space
 
 jQuery(document).ready(function () {
     setTimeout(function () {

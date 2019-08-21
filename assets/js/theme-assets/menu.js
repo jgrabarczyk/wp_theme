@@ -12,7 +12,7 @@
     const 
       $window = $(window),
       $header = $(".header.header"); 
-      $menuWrapper = $(".nav"),
+      $menuWrapper = $(".main-nav"),
       $menuBox = $("#menu-body"),
       $menuBtn = $("#mobile-menu-handler"),
 
@@ -20,10 +20,11 @@
     onMouseClick();
     onKeyboardClick();
     handleSubMenu();
+    updateBodyTopPadding();
 
     function onWindowEvents() {
       $window.on("scroll resize", function() {
-        stickHeaderToTop();
+        stickHeaderToTop();        
       });
     }
 
@@ -57,7 +58,7 @@
     }
 
     function toggleMainMenu() {
-      $(this).toggleClass("active");
+      $menuBtn.toggleClass("active");
       $menuBox.toggleClass("active");
     }
 
@@ -77,14 +78,14 @@
         if ($header.hasClass("sticky")) {
           return;
         }
-        $header.addClass("sticky");
+        $header.addClass("sticky"); 
       } else {
-        $header.removeClass("sticky");
+        $header.removeClass("sticky");                
       }
     }
 
     function addToggleArrowToSubMenu() {
-      if ($(".header-main-menu ul li").children(".sub-menu").length > 0) {
+      if ($("#menu-body ul li").children(".sub-menu").length > 0) {
         $(".sub-menu").before(
           '<span class="mobile-nav-arrow"><i class="fa fa-angle-down"></i></span>'
         );
@@ -98,6 +99,10 @@
           .slideToggle("slow");
         $(this).toggleClass("rotate-arrow");
       });
+    }
+
+    function updateBodyTopPadding(){
+      $('body').css('padding-top', $header.height() );             
     }
   }
 })(jQuery, this);

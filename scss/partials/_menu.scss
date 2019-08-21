@@ -1,368 +1,322 @@
+/*------------------------------------*\
+    Glboal
+\*------------------------------------*/
+$linkColor: color(blue, txt);
+
 header.header {
-	z-index: 10;
+  @include transition(height, 1);
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 91px;
+  &.sticky {
+    height: $headerMinHeight;
+    box-shadow: $boxShadow;
+  }
 }
 
-header.header .header-wrapper {
-	@include transition__medium;
-	@include defaultFlex;
-	min-height: $headerMinHeight;
-	align-items: center; 
-	height: 91px;
-	&.sticky:not(.purple) {
-		box-shadow: 0 0 2px 0 rgba(56, 69, 84, 0.2);
-	}
-	&.sticky {
-		height: 61px;
-		.logo {
-			img {
-				height: 23px;
-				width: auto;
-			}
-		}	
-		&::before {
-			pointer-events: none;
-			border-top-width: 0;
-		}
-	}
-	#menu-body .main-nav {
-		flex: 0 1 100%;
-	}
-	.main-nav {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
-		margin-left: auto;
-		margin-right: 0;
-		.nav {
-			flex: 0 1 100%;
-			display: flex;
-			.header-main-menu {
-				flex: 0 1 100%;
-				display: flex;
-				justify-content: flex-end;
-			}
-		}
-	}
-	.container-header {
-		> .main-nav {
-			flex: 0 1 calc(100% - 240px);
-		}
-	}
-	.logo {
-		position: relative;
-		z-index: 9999;
-		@include transition__medium;
-		img {
-			@include transition__medium;
-			height: 55px;
-			max-width: 100%;
-		}
-	}
+.header-container {
+  @include transition(height, 1);
+  @extend .container;
+  background: rgba(color(white), 0.9);
+  min-height: $headerMinHeight;
+  align-items: center;
+  height: 100%;
+  padding-top: spacing(xxs);
+  padding-bottom: spacing(xxs);
+}
+
+.logo {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  max-height: 100%;
+  height: 100%;
+  flex: 0 1 max-content;
+  .logo-img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+nav.main-nav {
+  flex: 1 1 auto;
+}
+
+.wp-header-menu {
+  flex: 0 1 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  .menu-item {
+    > a {
+      color: $linkColor;
+      font-weight: bold;
+      font-size: fs(sm);
+      @include on-event() {
+        color: $mainColorActiveHover;
+      }
+    }
+  }
 }
 
 .rotate-arrow {
-	transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-header.header ul.main-nav li {
-	> a {
-		color: color(blue, txt);
-		font-family: raleway;
-		font-weight: bold;
-		font-size: 14px;
-		@include on-event() {
-			color: color(blue, hover);
-		}
-	}
-}
-@media only screen and (min-width: 1024px) {
-	// nav every element
-	header.header ul.main-nav li {
-		a {
-			@include transition(color, 0.5);
-			text-transform: uppercase;
-			position: relative;
-			padding: 0 5px;
-		}
-	}
-
-  // main  nav current item
-  .menu-item-has-children{
-		position: relative;
-	}
-  // hover class
-	header.header ul.main-nav li.current-menu-parent:hover > a,
-	header.header ul.main-nav li.current_page_item:hover a,
-	header.header ul.main-nav li.current-menu-item:hover a {
+/*------------------------------------*\
+	Desktop Only
+\*------------------------------------*/
+@media only screen and (min-width: $mobileBreakpoint) {
+  .main-nav {
+    padding: 0 $defaultPadding;
   }
-  
-	//main nav active 
-	
-	header.header ul.main-nav li.current-menu-parent ~ div:not(.current-menu-item ) > a,
-	header.header ul.main-nav li.current_page_item ~ div:not(.current-menu-item ) > a,
-	header.header ul.main-nav li.current-menu-item > a {
-		position: relative;
-		color: #01b3cc;
-		&::before {
-			content: "";
-			border: 2px solid #01b3cc;
-			position: absolute;
-			width: 100%;
-			height: 30px;
-			top: 50%;
-			transform: translatey(-50%);
-			left: 0;
-		}
-	}
+  .wp-header-menu {
+    > .menu-item {
+      position: relative;
+      > a {
+        @include transition(color, 0.5);
+        text-transform: uppercase;
+        padding: $defaultPadding;
+      }
 
-	header.header ul li ul.sub-menu > a {
-		@include on-event(true) {
-			color: black;
-		}
-		&.current-menu-item > a {
-			color: black;
-		}
-	}
+      .mobile-nav-arrow {
+				@include multiple-transition((transform,color),1);        
+        display: none;
+        color: $mainColorActive;
+      }
+      .sub-menu {
+        list-style: none;
+        display: block;
+        position: absolute;
+        background: #f4f6f7;
+        top: calc(100% + 7px);
+        width: max-content;
+        min-width: auto;
+        max-width: initial;
+        z-index: 11;
+        opacity: 0;
+        max-height: 1000px;
+        overflow: hidden;
+        transform: translateY(20px);
+        transform-origin: 50% 0;
+        -webkit-transform-origin: 50% 0;
+        transition: 500ms;
+        pointer-events: none;
+        li {
+          &.current-menu-item {
+            border-left-color: $mainColorActiveHover;
+            background: color(white);
+            a {
+              &::before {
+                display: none;
+              }
+            }
+          }
+          width: 100%;
+          padding: $defaultPadding spacing(m);
+          @include transition__medium;
+          border-left: 3px solid transparent;
 
-	#menu-body {
-		ul.main-nav {
-			> li {
-				> a {
-					padding: 35px 17px;
-				}
+          &:not(:first-child) {
+            border-top: 1px solid #dfe5e8;
+          }
 
-				&.current-menu-item > a span {
-					bottom: -10px;
-				}
-				.mobile-nav-arrow {
-					@include transition__medium;
-					display: none;
-					color: $mainColorActive;
-				}
-				.sub-menu {
-					list-style: none;
-					display: block;
-					position: absolute;
-					background: #f4f6f7;
-					top: calc(100% - 3px);
-					width: max-content;
-					min-width: 280px;
-					max-width: initial;
-					z-index: 3;
-					opacity: 0;
-					max-height: 1000px;
-					overflow: hidden;
-					transform: translateY(20px);
-					transform-origin: 50% 0;
-					-webkit-transform-origin: 50% 0;
-					transition: 500ms;
-					pointer-events: none;
-					li {
-						&.current-menu-item {
-							border-left-color: color(blue, hover);
-							background: color(white);
+          @include on-event() {
+            background: color(white);
+            border-left-color: $mainColorActiveHover;
+            a {
+              color: $linkColor;
+            }
+          }
 
-							a {
-								&::before {
-									display: none;
-								}
-							}
-						}
-						width: 100%;
-						padding: 15px 30px;
-						@include transition__medium;
-						border-left: 3px solid transparent;
-						&:not(:first-child) {
-							border-top: 1px solid #dfe5e8;
-						}
-						&:hover {
-							background: #fff;
-							border-left-color: color(blue, hover);
-							a {
-								color: color(blue, txt);
-							}
-						}
-						a {
-							font-size: fs();
-							font-weight: 400;
-							color: color(blue, txt);
-							&:hover {
-								color: color(blue, txt);
-							}
-						}
-					}
-				}
-				&:hover {
-					.sub-menu {
-						pointer-events: all;
-						max-height: 1000px;
-						opacity: 1;
-						transform: translateY(0);
-					}
-				}
-			}
-		}
-	}
+          a {
+            font-size: fs();
+            font-weight: 400;
+            @include on-event(true) {
+              color: $linkColor;
+            }
+          }
+        }
+      }
+      @include on-event() {
+        .sub-menu {
+          pointer-events: all;
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  //main nav active
+  .wp-header-menu li.current-menu-parent ~ div:not(.current-menu-item) > a,
+  .wp-header-menu li.current_page_item ~ div:not(.current-menu-item) > a,
+  .wp-header-menu li.current-menu-item > a,
+  .wp-header-menu .current-menu-ancestor > a {
+    position: relative;
+    color: $mainColorActive;
+    &::before {
+      content: "";
+      border: 2px solid $mainColorActive;
+      position: absolute;
+      width: 100%;
+      height: 30px;
+      top: 50%;
+      transform: translatey(-50%);
+      left: 0;
+    }
+  }
+
+  //sub-menu styles
+  li.menu-item ul.sub-menu > a {
+    @include on-event(true) {
+      color: color(black);
+    }
+    &.current-menu-item > a {
+      color: color(black);
+    }
+  }
 }
-@media only screen and (max-width: 1024px) {
-	header.header .header-wrapper {
-		display: block;
-		min-height: 0;
-		height: 61px;
-		top: 0;
-		.logo {
-			z-index: 99999;
-			img {
-				height: 23px;
-			}
-		}
-		> nav.nav {
-			display: block;
 
-			ul {
-				display: block;
-			}
-		}
-	}
+/*------------------------------------*\
+	Mobile Only
+\*------------------------------------*/
+@media only screen and (max-width: $mobileBreakpoint) {
+  .header-container {
+    justify-content: space-between;
+    .logo,
+    .search-form-wrapper,
+    nav.main-nav {
+      flex: 0 1 auto;
+    }
+    .logo {
+      order: 1;
+    }
+    .search-form-wrapper {
+      order: 2;
+    }
+    nav.main-nav {
+      order: 3;
+    }
+  }
 
-	#mobile-menu-handler,
-	#mobile-menu-handler * {
-		will-change: transform;
-	}
+  #mobile-menu-handler,
+  #mobile-menu-handler * {
+    will-change: transform;
+    @include multiple-transition((transform, background-color), 1);
+  }
 
-	#mobile-menu-handler {
-		@include transition__medium;
-		display: block;
-		position: absolute;
-		z-index: 9999;
-		top: $defaultPadding;
-		right: $defaultPadding;
-		cursor: pointer;
+  #mobile-menu-handler {
+    display: block;
+    z-index: 99;
+    cursor: pointer;
+    @include on-event() {
+      div {
+        background-color: $mainColorActiveHover;
+      }
+    }
+    div {
+      width: spacing(m);
+      height: 3px;
+      border-radius: 2px;
+      margin-bottom: 4px;
+      background-color: $mainColorActive;
+    }
 
-		div {
-			@include transition__medium;
-			width: 26px;
-			height: 3px;
-			border-radius: 2px;
-			margin-bottom: 4px;
-			background-color: color(blue, hover);
-		}
+    &.active {
+      div {
+        background-color: color(white);
+      }
+      #top {
+        transform: translateY(4px) rotate(-135deg);
+      }
+      #middle {
+        opacity: 0;
+        transform: rotate(135deg);
+      }
+      #bottom {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+      @include on-event() {
+        div {
+          background-color: $mainColorActiveHover;
+        }
+      }
+    }
+  }
 
-		&.active {
-			div {
-				background-color: #fff;
-			}
-			#top {
-				transform: translateY(4px) rotate(-135deg);
-			}
+  #menu-body {
+    will-change: transform, opacity;
+    position: fixed;
+    display: block;
+    top: 0px;
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    opacity: 0;
+    padding: $defaultSpacing 0px;
+    background-color: rgba($mainColorActive, 0.95);
+    overflow: auto;
+    z-index: 98;
+    @include multiple-transition((right, opacity), 1);
+    &.active {
+      right: 0px;
+      opacity: 1;
+      box-shadow: $boxShadow;
+      overflow: hidden;
+    }
+  }
 
-			#middle {
-				opacity: 0;
-				transform: rotate(135deg);
-			}
+  .wp-header-menu {
+    display: block;
+    border-bottom: none;
+    width: 100%;
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
 
-			#bottom {
-				transform: translateY(-10px) rotate(-45deg);
-			}
-		}
-	}
+    > .menu-item {
+      position: relative;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: $defaultPadding;
+      a {
+        @include transition(color, 1);
+        color: color(white);
+        font-size: fs("lg");
+        @include on-event() {
+          color: $mainColorActiveHover;
+        }
+      }
+      .sub-menu {
+        display: none;
+        padding-top: $defaultPadding;
+      }
 
-	#menu-body {
-		@include transition__medium;
-		will-change: transform, opacity;
-		position: fixed;
-		z-index: 9998;
-		overflow: auto;
-		top: 0px;
-		bottom: 0;
-		right: -100%;
-		width: 100%;
-		opacity: 0;
-		padding: 20px 0px;
-		background-color: rgba(33, 35, 49, 0.95);
-		color: #4a4a49;
-		display: block;
+      .mobile-nav-arrow {
+        @include multiple-transition((transform, color), 1);
+        display: inline-block;
+        color: color(white);
+        position: absolute;
+        right: $defaultPadding;
 
-		&.active {
-			right: 0px;
-			opacity: 1;
-			box-shadow: -1px 1px 5px 0px #4f4f4f;
-			z-index: 9998;
-			overflow: hidden;
-		}
-		#lang-menu {
-			flex: 0 1 100%;
-		}
-		> ul.main-nav {
-			@include transition__medium;
-			display: block;
-
-			border-bottom: none;
-			width: 100%;
-			position: relative;
-			transform: translateY(-50%);
-			top: 50%;
-
-			> li {
-				@include transition__medium;
-				position: relative;
-				cursor: pointer;
-				font-size: fs("lg");
-				display: block;
-				width: 100%;
-				line-height: 1em;
-				text-align: center;
-				.sub-menu {
-					display: none;
-					padding-left: $defaultPadding;
-				}
-
-				.mobile-nav-arrow {
-					@include transition__medium;
-					display: inline-block;
-					color: #fff;
-					position: absolute;
-					right: $defaultPadding;
-					top: 25px;
-				}
-				a {
-					color: #fff;
-					@include transition__medium;
-					padding: $defaultPadding;
-					height: 60px;
-					&.open {
-						&,
-						&:hover {
-							color: color(blue, hover);
-						}
-					}
-					&:hover {
-						color: #fff;
-						@include transition__medium;
-						&:after {
-							bottom: -1px;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	.header-fixed #menu-body > ul {
-		@include transition__medium;
-		top: 310px;
-	}
-
-	header.header-fixed #mobile-menu-handler {
-		top: 22px;
-		@include transition__medium;
-	}
-
-	#menu-body > ul > li {
-		margin-left: 0;
-		a {
-			font-size: fs("lg");
-			display: inline-block;
-		}
-	}
+        &.rotate-arrow {
+          transform: rotate(180deg);
+          @include on-event() {
+            transform: scale(1.15) rotate(180deg);
+          }
+        }
+        @include on-event() {
+          transform: scale(1.15);
+          color: $mainColorActiveHover;
+        }
+      }
+    }
+  }
 }

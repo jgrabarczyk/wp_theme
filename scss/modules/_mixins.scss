@@ -16,7 +16,7 @@
 	transition: $length + s $properity + " " + $transition_style;
 }
 @mixin multiple-transition(
-	$properities,
+	$properitiesArr,
 	$length,
 	$transition_style: cubic-bezier(0.215, 0.61, 0.355, 1)
 ) {
@@ -24,7 +24,7 @@
 	// we override it anyway
 	$handler: 0;
 	$count: 0;
-	@each $val in $properities {
+	@each $val in $properitiesArr {
 		@if $count == 0 {
 			$handler: $length + s $val + " " + $transition_style;
 		} @else {
