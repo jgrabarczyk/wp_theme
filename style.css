@@ -1714,10 +1714,12 @@ header.header.sticky {
   -webkit-box-shadow: -1px 1px 5px 0px #4f4f4f;
   box-shadow: -1px 1px 5px 0px #4f4f4f; }
 
+.header-wrapper {
+  background: rgba(255, 255, 255, 0.9); }
+
 .header-container {
   -webkit-transition: 1s height cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: 1s height cubic-bezier(0.215, 0.61, 0.355, 1);
-  background: rgba(255, 255, 255, 0.9);
   min-height: 61px;
   -webkit-box-align: center;
   -webkit-align-items: center;

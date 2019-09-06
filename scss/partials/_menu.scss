@@ -17,10 +17,12 @@ header.header {
   }
 }
 
+.header-wrapper {
+  background: rgba(color(white), 0.9);
+}
 .header-container {
   @include transition(height, 1);
   @extend .container;
-  background: rgba(color(white), 0.9);
   min-height: $headerMinHeight;
   align-items: center;
   height: 100%;

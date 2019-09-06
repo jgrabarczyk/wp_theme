@@ -32,7 +32,7 @@
 </head>
 
 <body <?php body_class();?>>
-  <header class="header" role="banner">
+  <header class="header header-wrapper" role="banner">
     <div class="header-container d-flex">
 
 			<a href="<?=home_url();?>"
