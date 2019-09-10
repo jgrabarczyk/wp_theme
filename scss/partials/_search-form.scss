@@ -6,16 +6,16 @@
     .search-input{
       @extend .btn;
       @extend .btn__small;
-			@extend .btn__blue--o;
+			@extend .btn__third--o;
 			@include on-event(){
-				background: color(white);
-				color: color(black,txt);
+				background: color(main);
+				color: color(secondary,txt);
 			}
     }
     .search-submit{
       @extend .btn;
       @extend .btn__small;
-			@extend .btn__blue;
+			@extend .btn__third;
 			border-width: 1px;
 		}
   }
@@ -24,7 +24,7 @@
 #searchform-toggle {
 	@extend .btn;
 	@extend .btn__small;
-  @extend .btn__blue--o;
+  @extend .btn__third--o;
   min-width: 1px;  
   display: none;
 }

@@ -1,7 +1,7 @@
 /*------------------------------------*\
     Glboal
 \*------------------------------------*/
-$linkColor: color(blue, txt);
+$linkColor: color(third, txt);
 
 header.header {
   @include transition(height, 1);
@@ -18,7 +18,7 @@ header.header {
 }
 
 .header-wrapper {
-  background: rgba(color(white), 0.9);
+  background: rgba(color(main), 0.9);
 }
 .header-container {
   @include transition(height, 1);
@@ -111,7 +111,7 @@ nav.main-nav {
         li {
           &.current-menu-item {
             border-left-color: $mainColorActiveHover;
-            background: color(white);
+            background: color(main);
             a {
               &::before {
                 display: none;
@@ -128,7 +128,7 @@ nav.main-nav {
           }
 
           @include on-event() {
-            background: color(white);
+            background: color(main);
             border-left-color: $mainColorActiveHover;
             a {
               color: $linkColor;
@@ -176,10 +176,10 @@ nav.main-nav {
   //sub-menu styles
   li.menu-item ul.sub-menu > a {
     @include on-event(true) {
-      color: color(black);
+      color: color(secondary);
     }
     &.current-menu-item > a {
-      color: color(black);
+      color: color(secondary);
     }
   }
 }
@@ -231,7 +231,7 @@ nav.main-nav {
 
     &.active {
       div {
-        background-color: color(white);
+        background-color: color(main);
       }
       #top {
         transform: translateY(4px) rotate(-135deg);
@@ -290,7 +290,7 @@ nav.main-nav {
       padding: $defaultPadding;
       a {
         @include transition(color, 1);
-        color: color(white);
+        color: color(main);
         font-size: fs("lg");
         @include on-event() {
           color: $mainColorActiveHover;
@@ -304,7 +304,7 @@ nav.main-nav {
       .mobile-nav-arrow {
         @include multiple-transition((transform, color), 1);
         display: inline-block;
-        color: color(white);
+        color: color(main);
         position: absolute;
         right: $defaultPadding;
 

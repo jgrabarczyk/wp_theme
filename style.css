@@ -1385,7 +1385,8 @@ strong {
  * Looking for variables source? 
  * Check: -> scss/modules/_variables.scss 
  */
-.btn, .search-form-wrapper .search-form .search-input, .search-form-wrapper .search-form .search-submit, #searchform-toggle {
+.btn, input[type="submit"],
+button, .search-form-wrapper .search-form .search-input, .search-form-wrapper .search-form .search-submit, #searchform-toggle {
   display: inline-block;
   text-decoration: none;
   font-size: 14px;
@@ -1409,65 +1410,68 @@ strong {
   padding: 5px 10px;
   min-width: 1px; }
 
-.btn:hover, .search-form-wrapper .search-form .search-input:hover, .search-form-wrapper .search-form .search-submit:hover, #searchform-toggle:hover {
+.btn:hover, input:hover[type="submit"],
+button:hover, .search-form-wrapper .search-form .search-input:hover, .search-form-wrapper .search-form .search-submit:hover, #searchform-toggle:hover {
   background: #bbb; }
 
-.btn__white {
+.btn__main {
   background: white;
   color: #fff;
   border: 2px solid white; }
 
-.btn__white:hover {
+.btn__main:hover {
   background: #cccccc;
   color: white;
   border-color: #cccccc; }
 
-.btn__white--o {
+.btn__main--o {
   background: white;
   color: white;
   border: 1px solid white; }
 
-.btn__white--o:hover {
+.btn__main--o:hover {
   color: white;
   border-color: #cccccc;
   background: #cccccc; }
 
-.btn__black {
+.btn__secondary, input[type="submit"],
+button {
   background: black;
   color: #fff;
   border: 2px solid black; }
 
-.btn__black:hover {
+.btn__secondary:hover, input:hover[type="submit"],
+button:hover {
   background: #333333;
   color: white;
   border-color: #333333; }
 
-.btn__black--o {
+.btn__secondary--o {
   background: white;
   color: black;
   border: 1px solid black; }
 
-.btn__black--o:hover {
+.btn__secondary--o:hover {
   color: white;
   border-color: #333333;
   background: #333333; }
 
-.btn__blue, .search-form-wrapper .search-form .search-submit {
+.btn__third, .search-form-wrapper .search-form .search-submit {
   background: #00b4cc;
   color: #fff;
   border: 2px solid #00b4cc; }
 
-.btn__blue:hover, .search-form-wrapper .search-form .search-submit:hover {
+.btn__third:hover, .search-form-wrapper .search-form .search-submit:hover {
   background: #338d99;
   color: white;
   border-color: #338d99; }
 
-.btn__blue--o, .search-form-wrapper .search-form .search-input, #searchform-toggle {
+.btn__third--o, .search-form-wrapper .search-form .search-input, #searchform-toggle {
   background: white;
   color: #00b4cc;
   border: 1px solid #00b4cc; }
 
-.btn__blue--o:hover, .search-form-wrapper .search-form .search-input:hover, #searchform-toggle:hover {
+.btn__third--o:hover, .search-form-wrapper .search-form .search-input:hover, #searchform-toggle:hover {
   color: white;
   border-color: #338d99;
   background: #338d99; }

@@ -42,28 +42,28 @@ $defaultPadding: spacing(sm); //15
 
 /*-- Colors --------------------------*/
 $colormap: (	
-	white: (
+	main: (
 		main: hsl(0, 0%, 100%),
 		hover: hsl(0, 0%, 80%),
 		txt: hsl(0, 0%, 75%)
 	), 
-	black: ( 
+	secondary: ( 
 		main: hsl(0, 0%, 0%),
 		hover: hsl(0, 0%, 20%),
 		txt: hsl(0, 0%, 20%)
 	),
-	blue: (
+	third: (
 		main: hsl(187, 100%, 40%),
 		hover: hsl(187, 50%, 40%),
 		txt: hsl(187, 50%, 50%)
 	),	
 );
 // base for font txt
-$mainColor: color(black, txt);
+$mainColor: color(secondary, txt);
 //base for links 
-$mainColorActive: color(blue);
+$mainColorActive: color(third);
 //base for hovers / actives
-$mainColorActiveHover: color(blue, hover);
+$mainColorActiveHover: color(third, hover);
 $boxShadow:  -1px 1px 5px 0px #4f4f4f;
 /*-- Colors END ----------------------*/
 
