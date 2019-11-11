@@ -59,3 +59,14 @@
 	}
 }
 
+
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty"
+@function text-contrast($color, $dark: #000, $light: #fff) {
+  @if $color == null {
+    @return null;
+  }
+  @else {
+    $yiq: (red($color) * 299 + green($color) * 587 + blue($color) * 114) / 1000;
+    @return if($yiq >= 128, $dark, $light);
+  }
+}
