@@ -1,0 +1,43 @@
+#article-group-wrapper {
+  background-image: url("./assets/img/bg-meet-us.jpg");
+  background-size: cover;
+  background-position: center center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .default-heading {
+    color: color(third);
+  }
+  .article-box {
+    $transitionDuration: 0.5;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+
+    position: relative;
+    &__title {
+      position: absolute;
+      bottom: 25px;
+      right: 0;
+      left: 0;
+      color: color(third);
+      text-align: center;
+      width: 100%;
+      font-size: 26px;
+      font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #article-group-wrapper {
+    .article-box {
+			max-width: 370px;
+			margin: 0 auto 20px;
+      &__title {
+				font-size: fs(m);
+				bottom: 15px;
+      }
+    }
+  }
+}
