@@ -1,49 +1,50 @@
 (function($, root, undefined) {
   $(function() {
-    searchForm();
-
-    function searchForm() {
-      const $searchFormWrapper = $("#searchform-mobile-input-hidden");
-      if (!$searchFormWrapper.length) {
-        return;
-      }
-			const 
-				$searchFormToggle = $("#searchform-toggle"),
-				$searchForm = $(".search-form");
-				
-			toggleOnClick();
-			closeOnOutsideClick();
-			onKeyboardClick();
-
-			function toggleOnClick(){
-				$searchFormToggle.on("click tap touch", function(e) {
-					$searchForm.toggleClass('active');
-				});
-			}
-
-			function closeOnOutsideClick(){
-				$(document).on("click tap touch", function(e) {
-					if (
-						!$searchFormWrapper.is(e.target) &&
-						$searchFormWrapper.has(e.target).length === 0 &&
-						$searchForm.is(':visible')					
-					) {
-						// $searchForm.fadeOut();
-						$searchForm.removeClass('active');
-					}
-				});
-			}
-			
-			function onKeyboardClick() {
-				const ESCAPE_KEY_CODE = 27;
-				window.addEventListener("keydown", function(event) {
-					if ($searchForm.is(':visible') && event.keyCode === ESCAPE_KEY_CODE) {
-						// $searchForm.fadeOut();
-						$searchForm.removeClass('active');
-					}
-				});
-			}
-
-    }
+    let sfToggler = new SearchFormToggler("#searchform-mobile-input-hidden");
   });
+  class SearchFormToggler {
+    constructor(formWrapperSelector) {
+      this.searchFormWrapper =
+        $(formWrapperSelector) || $("#searchform-mobile-input-hidden");
+
+      if (this.searchFormWrapper.length) {
+        (this.searchFormToggler = $("#searchform-toggle")),
+				(this.searchForm = $(".search-form"));
+
+        this.toggleOnClick();
+        this.closeOnOutsideClick();
+        this.onKeyboardClick();
+      }
+    }
+
+    toggleOnClick = () => {
+      this.searchFormToggler.on("click tap touch", e => {
+        this.searchForm.toggleClass("active");
+      });
+    };
+
+    closeOnOutsideClick() {      
+      $(document).on("click tap touch", e => {
+        if (
+          !this.searchFormWrapper.is(e.target) &&
+          this.searchFormWrapper.has(e.target).length === 0 &&
+          this.searchForm.is(":visible")
+        ) {
+          this.searchForm.removeClass("active");
+        }
+      });
+    }
+
+    onKeyboardClick = () => {      
+      const ESCAPE_KEY_CODE = 27;
+      window.addEventListener("keydown", (event) => {
+        if (
+          this.searchForm.is(":visible") &&
+          event.keyCode === ESCAPE_KEY_CODE
+        ) {
+          this.searchForm.removeClass("active");
+        }
+      });
+    };
+  }
 })(jQuery, this);
