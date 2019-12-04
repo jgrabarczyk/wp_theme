@@ -1,20 +1,20 @@
 (function($, root, undefined) {
   $(function() {    
-    let menu = new mainMenu();    
+    let menu = new MainMenu();    
   });
-  class mainMenu {
+  class MainMenu {
     constructor() {
       (this.window = $(window)),
-      (this.header = $(".header.header")),
-      (this.menuWrapper = $(".main-nav")),
-      (this.menuBox = $("#menu-body")),
-      (this.menuBtn = $("#mobile-menu-handler"));
+			(this.header = $(".header.header")),
+			(this.menuWrapper = $(".main-nav")),
+			(this.menuBox = $("#menu-body")),
+			(this.menuBtn = $("#mobile-menu-handler"));
 
-      this.onWindowEvents();
-      this.onMouseClick();
-      this.onKeyboardClick();
-      this.handleSubMenu();
-      this.trackMenuActive();
+			this.onWindowEvents();
+			this.onMouseClick();
+			this.onKeyboardClick();
+			this.handleSubMenu();
+			this.trackMenuActive();
     }
 
     stickHeaderToTop() {
@@ -74,17 +74,18 @@
     };
 
     onMouseClick = () => {
+			let classThis = this;
       $(document).on("click tap touch", function(e) {
         if (
-          !this.menuWrapper.is(e.target) &&
-          this.menuWrapper.has(e.target).length === 0
+          !classThis.menuWrapper.is(e.target) &&
+          classThis.menuWrapper.has(e.target).length === 0
         ) {
-          closeMainMenu();
+          classThis.closeMainMenu();
         }
       });
 
       this.menuBtn.on("click tap touch", () => {
-        toggleMainMenu();
+        this.toggleMainMenu();
       });
     };
 
