@@ -33,29 +33,28 @@
       }
     }
 
-    onWindowEvents = () => {
-			let classThis = this; 
-      this.window.on("scroll", function() {
-        classThis.stickHeaderToTop();
+    onWindowEvents = () => {			
+      this.window.on("scroll", () => {
+        this.stickHeaderToTop();
       });
-      this.window.on("resize", function() {
-        classThis.stickHeaderToTop();
+      this.window.on("resize", () => {
+        this.stickHeaderToTop();
       });
     };
 
     trackMenuActive = () => {
       let $currentActiveEl = $(".current-menu-item");
       this.updateBarActivePosition($currentActiveEl);
-			let classThis = this;
-      $(".wp-header-menu li").on("mouseenter", function() {
-        classThis.updateBarActivePosition($(this));
+			
+      $(".wp-header-menu li").on("mouseenter", () => {
+        this.updateBarActivePosition($(this));
       });
 
-      $(".wp-header-menu li").on("mouseleave", function() {
-        classThis.updateBarActivePosition($currentActiveEl);
+      $(".wp-header-menu li").on("mouseleave", () => {
+        this.updateBarActivePosition($currentActiveEl);
       });
 
-      $(".wp-header-menu li").on("mouseup tap touch", function() {
+      $(".wp-header-menu li").on("mouseup tap touch", () => {
         $(".wp-header-menu li").off("mouseleave");
       });
     };
@@ -73,22 +72,26 @@
       $activeBorder.css(css);
     };
 
-    onMouseClick = () => {
-			let classThis = this;
-      $(document).on("click tap touch", function(e) {
+    onMouseClick = () => {			
+      $(document).on("click tap touch", e => {
         if (
-          !classThis.menuWrapper.is(e.target) &&
-          classThis.menuWrapper.has(e.target).length === 0
+          !this.menuWrapper.is(e.target) &&
+          this.menuWrapper.has(e.target).length === 0
         ) {
-          classThis.closeMainMenu();
+          this.closeMainMenu();
         }
       });
 
-      this.menuBtn.on("click tap touch", () => {
+      this.menuBtn.on("click tap touch", ()=> {
         this.toggleMainMenu();
       });
     };
-
+		
+		toggleMainMenu() {
+      this.menuBtn.toggleClass("active");
+      this.menuBox.toggleClass("active");
+		}
+		
     closeMainMenu = () => {
       if (
         !this.menuBtn.hasClass("active") &&
@@ -102,13 +105,13 @@
 
     onKeyboardClick = () => {
 			const ESCAPE_KEY_CODE = 27;
-			let classThis = this;
-      window.addEventListener("keydown", function(event) {
+			
+      window.addEventListener("keydown", (event) => {
         if (
-          classThis.menuBox.hasClass("active") &&
+          this.menuBox.hasClass("active") &&
           event.keyCode === ESCAPE_KEY_CODE
         ) {
-          classThis.closeMainMenu();
+          this.closeMainMenu();
         }
       });
     };
