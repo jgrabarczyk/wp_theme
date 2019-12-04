@@ -1,0 +1,70 @@
+#call-us-banner {
+  background-image: url("./assets/img/baner-call-us.jpg");
+  background-position: center;
+  background-size: cover;
+	min-height: 250px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	.call-us-banner{
+		&__title{
+			font-size: fs(xl);
+			font-family: 'cuprum';
+			color: color(fonts);
+			font-weight: 700;
+		}
+		&__subtitle{			
+			font-family: 'cuprum';
+			color: color(secondary);
+			font-weight: 700;
+			font-size: 24px;
+		}
+		&__txt{
+			color: color(fonts);			
+			line-height: 1.25;			
+		}
+	}
+  .btn-row {
+    margin: 0 auto;
+    max-width: 450px;
+    display: flex;
+    justify-content: space-between;
+		width: 100%;
+    .phone-wrapper {
+      display: flex;
+      flex: 0 1 205px;
+			align-items: center;
+			a{
+				font-size: 26px;
+				font-family: 'cuprum';				
+			}
+    }
+  }
+}
+
+@media (max-width: 480px){
+	#call-us-banner {
+		.call-us-banner{
+			&__title{
+				font-size: 24px
+			}
+		} 
+	
+	.btn-row{
+		flex-wrap: wrap;
+		justify-content: center;
+		> .phone-wrapper,
+		> .btn{
+			margin-bottom: $defaultPadding;
+		}
+		.phone-wrapper{
+			a{
+				margin: 0 auto;
+			}
+		}
+	}
+	}
+}

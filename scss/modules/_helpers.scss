@@ -72,64 +72,6 @@
   display: block !important;
 }
 
-@each $key, $val in $breakpoints {
-  
-	@media all and (max-width: $key + px) {
-		.hide-#{$key} {
-			display: none !important;
-		}
-		.show-#{$key} {
-			display: block !important;
-		}
-		.show-ib-#{$key} {
-			display: inline-block !important;
-		}
-		.jc-between-#{$key} {
-			justify-content: space-between;
-		}
-		.jc-center-#{$key} {
-			justify-content: center;
-		}
-		.jc-end-#{$key} {
-			justify-content: flex-end;
-    }
-    .ai-center-#{$key}{
-      align-items: center;
-    }
-    .ai-base-#{$key}{
-      align-items: baseline;
-    }
-    .ai-unset-#{$key}{
-      align-items: unset
-    }
-		.txt-left-#{$key} {
-			text-align: left;
-		}
-		.txt-right-#{$key} {
-			text-align: right;
-		}
-		.txt-center-#{$key} {
-			text-align: center;
-		}
-		.o-1-#{$key} {
-			order: 1;
-		}
-		.o-2-#{$key} {
-			order: 2;
-		}
-  }
-  $keyplus : $key + 1;
-	
-	@media all and (min-width: $keyplus + px) {
-		.show-#{$key} {
-			display: none !important;
-		}
-		.show-ib-#{$key} {
-			display: none !important;
-		}
-	}
-}
-
 //SPACING 
 .mg-b-auto{
   margin-bottom: auto;
@@ -145,10 +87,10 @@
 }
 //usefull to get container without paddings
 .p0 {
-	padding: 0;
+	padding: 0!important;
 }
 
-// SCSS Functions for list variables and breakpoints
+// SCSS generate spacings
 @each $key, $val in $spacing {
 	.mg-v-#{$key} {
 		margin-top: #{$val}px !important;
@@ -191,8 +133,124 @@
 	.pd-r-#{$key} {
 		padding-right: #{$val}px !important;
 	}
+	.pd-#{$key}{
+		padding: #{$val}px !important;
+	}
+}
+
+// SCSS generate style for each breakpoints
+@each $key, $val in $breakpoints {	
+	@media all and (max-width: $val + px) {		
+
+		//generate spacing for breakpoints
+		@each $keySpacing, $valSpacing in $spacing {
+			.mg-v-#{$key}-#{$keySpacing} {
+				margin-top: #{$valSpacing}px !important;
+				margin-bottom: #{$valSpacing}px !important;
+			}
+			.mg-h-#{$key}-#{$keySpacing} {
+				margin-left: #{$valSpacing}px !important;
+				margin-right: #{$valSpacing}px !important;
+			}
+			.mg-t-#{$key}-#{$keySpacing} {
+				margin-top: #{$valSpacing}px !important;
+			}
+			.mg-b-#{$key}-#{$keySpacing} {
+				margin-bottom: #{$valSpacing}px !important;
+			}
+			.mg-l-#{$key}-#{$keySpacing} {
+				margin-left: #{$valSpacing}px !important;
+			}
+			.mg-r-#{$key}-#{$keySpacing} {
+				margin-right: #{$valSpacing}px !important;
+			}
+			
+			.pd-v-#{$key}-#{$keySpacing} {
+				padding-top: #{$valSpacing}px !important;
+				padding-bottom: #{$valSpacing}px !important;
+			}
+			.pd-h-#{$key}-#{$keySpacing} {
+				padding-left: #{$valSpacing}px !important;
+				padding-right: #{$valSpacing}px !important;
+			}
+			.pd-t-#{$key}-#{$keySpacing} {
+				padding-top: #{$valSpacing}px !important;
+			}
+			.pd-b-#{$key}-#{$keySpacing} {
+				padding-bottom: #{$valSpacing}px !important;
+			}
+			.pd-l-#{$key}-#{$keySpacing} {
+				padding-left: #{$valSpacing}px !important;
+			}
+			.pd-r-#{$key}-#{$keySpacing} {
+				padding-right: #{$valSpacing}px !important;
+			}
+			.pd-#{$key}-#{$keySpacing}{
+				padding: #{$valSpacing}px !important;
+			}
+		}		
+	
+		.hide-#{$key} {
+			display: none !important;
+		}
+		.show-#{$key} {
+			display: block !important;
+		}
+		.show-ib-#{$key} {
+			display: inline-block !important;
+		}
+		.jc-between-#{$key} {
+			justify-content: space-between;
+		}
+		.jc-center-#{$key} {
+			justify-content: center;
+		}
+		.jc-end-#{$key} {
+			justify-content: flex-end;
+    }
+    .ai-center-#{$key}{
+      align-items: center;
+    }
+    .ai-base-#{$key}{
+      align-items: baseline;
+    }
+    .ai-unset-#{$key}{
+      align-items: unset
+    }
+		.txt-left-#{$key} {
+			text-align: left;
+		}
+		.txt-right-#{$key} {
+			text-align: right;
+		}
+		.txt-center-#{$key} {
+			text-align: center;
+		}
+		.o-1-#{$key} {
+			order: 1;
+		}
+		.o-2-#{$key} {
+			order: 2;
+		}
+	}
+	
+  $valplus : $val + 1;	
+	@media all and (min-width: $valplus + px) {
+		.show-#{$key} {
+			display: none !important;
+		}
+		.show-ib-#{$key} {
+			display: none !important;
+		}
+	}
 }
 
 
 
-//
+
+@each $color, $val in $colormap {
+	.bg-#{$color}{
+		background: color($color, main);
+		color: text-contrast(color($color));
+	}
+}

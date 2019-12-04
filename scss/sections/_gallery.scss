@@ -1,0 +1,50 @@
+#gallery-group{
+	.article-box{
+		padding:0;
+		position: relative;
+		&__title{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+			color: color(third);
+			font-family: "cuprum";
+			font-size: fs(lg);
+		}
+	}
+}
+
+@media (max-width: 1900px){
+	#gallery-group{
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+
+#gallery-btn{
+	.btn{
+		font-size: 21px;
+	}
+}
+
+@media(max-width: 768px){
+	#gallery-btn{
+		margin-top: 15px!important;
+	}
+}
+@media(min-width: 769px){
+	#gallery{
+		&.gallery{
+			position: relative;
+			.popped{
+				position: absolute;
+				left: 50%;
+				top: 80px;
+				transform: translateX(-50%);
+			}
+			
+		}
+	}		
+}
