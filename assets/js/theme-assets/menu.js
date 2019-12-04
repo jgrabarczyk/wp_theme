@@ -1,108 +1,141 @@
-/*
- *  
- *
- */
-
 (function($, root, undefined) {
-  $(function() {
-    mainMenu();
+  $(function() {    
+    let menu = new mainMenu();    
   });
+  class mainMenu {
+    constructor() {
+      (this.window = $(window)),
+			(this.header = $(".header.header")),
+			(this.menuWrapper = $(".main-nav")),
+			(this.menuBox = $("#menu-body")),
+			(this.menuBtn = $("#mobile-menu-handler"));
 
-  function mainMenu() {
-    const 
-      $window = $(window),
-      $header = $(".header.header"); 
-      $menuWrapper = $(".main-nav"),
-      $menuBox = $("#menu-body"),
-      $menuBtn = $("#mobile-menu-handler"),
-
-    onWindowEvents();
-    onMouseClick();
-    onKeyboardClick();
-    handleSubMenu();
-    updateBodyTopPadding();
-
-    function onWindowEvents() {
-      $window.on("scroll resize", function() {
-        stickHeaderToTop();        
-      });
+			this.onWindowEvents();
+			this.onMouseClick();
+			this.onKeyboardClick();
+			this.handleSubMenu();
+			this.trackMenuActive();
     }
 
-    function onMouseClick() {
+    stickHeaderToTop() {
+      let offset = this.header.height();
+      let scrollTop = this.window.scrollTop();
+
+      if (scrollTop > offset) {
+        if (this.header.hasClass("sticky")) {
+          return;
+        }
+        this.header.addClass("sticky");
+        this.trackMenuActive();
+      } else {
+        this.header.removeClass("sticky");
+        setTimeout(this.trackMenuActive, 1000);
+      }
+    }
+
+    onWindowEvents = () => {
+			let classThis = this; 
+      this.window.on("scroll", function() {
+        classThis.stickHeaderToTop();
+      });
+      this.window.on("resize", function() {
+        classThis.stickHeaderToTop();
+      });
+    };
+
+    trackMenuActive = () => {
+      let $currentActiveEl = $(".current-menu-item");
+      this.updateBarActivePosition($currentActiveEl);
+			let classThis = this;
+      $(".wp-header-menu li").on("mouseenter", function() {
+        classThis.updateBarActivePosition($(this));
+      });
+
+      $(".wp-header-menu li").on("mouseleave", function() {
+        classThis.updateBarActivePosition($currentActiveEl);
+      });
+
+      $(".wp-header-menu li").on("mouseup tap touch", function() {
+        $(".wp-header-menu li").off("mouseleave");
+      });
+    };
+
+    updateBarActivePosition = $el => {
+      let $activeBorder = $("#menu-body .active-border");
+      let top = this.header.hasClass("sticky")
+        ? 0
+        : $el.position().top - $el.find("a").height();
+      let css = {
+        left: $el.position().left,
+        top: top,
+        width: $el.width()
+      };
+      $activeBorder.css(css);
+    };
+
+    onMouseClick = () => {
       $(document).on("click tap touch", function(e) {
         if (
-          !$menuWrapper.is(e.target) &&
-          $menuWrapper.has(e.target).length === 0
+          !this.menuWrapper.is(e.target) &&
+          this.menuWrapper.has(e.target).length === 0
         ) {
           closeMainMenu();
         }
       });
 
-      $menuBtn.on("click tap touch", () => {
+      this.menuBtn.on("click tap touch", () => {
         toggleMainMenu();
       });
-    }
+    };
 
-    function onKeyboardClick() {
-      const ESCAPE_KEY_CODE = 27;
-      window.addEventListener("keydown", function(event) {
-        if ($menuBox.hasClass("active") && event.keyCode === ESCAPE_KEY_CODE) {
-          closeMainMenu();
-        }
-      });
-    }
-
-    function handleSubMenu() {
-      addToggleArrowToSubMenu();
-      animateArrowSubMenu();
-    }
-
-    function toggleMainMenu() {
-      $menuBtn.toggleClass("active");
-      $menuBox.toggleClass("active");
-    }
-
-    function closeMainMenu() {
-      if (!$menuBtn.hasClass("active") && !$menuBox.hasClass("active")) {
+    closeMainMenu = () => {
+      if (
+        !this.menuBtn.hasClass("active") &&
+        !this.menuBox.hasClass("active")
+      ) {
         return;
       }
-      $menuBtn.removeClass("active");
-      $menuBox.removeClass("active");
-    }
+      this.menuBtn.removeClass("active");
+      this.menuBox.removeClass("active");
+    };
 
-    function stickHeaderToTop() {
-      let offset = $header.height();
-      let scrollTop = $window.scrollTop();
-
-      if (scrollTop > offset) {
-        if ($header.hasClass("sticky")) {
-          return;
+    onKeyboardClick = () => {
+			const ESCAPE_KEY_CODE = 27;
+			let classThis = this;
+      window.addEventListener("keydown", function(event) {
+        if (
+          classThis.menuBox.hasClass("active") &&
+          event.keyCode === ESCAPE_KEY_CODE
+        ) {
+          classThis.closeMainMenu();
         }
-        $header.addClass("sticky"); 
-      } else {
-        $header.removeClass("sticky");                
-      }
-    }
+      });
+    };
 
-    function addToggleArrowToSubMenu() {
+    handleSubMenu = () => {
+      this.addToggleArrowToSubMenu();
+      this.animateArrowSubMenu();
+    };
+
+    addToggleArrowToSubMenu = () => {
       if ($("#menu-body ul li").children(".sub-menu").length > 0) {
         $(".sub-menu").before(
           '<span class="mobile-nav-arrow"><i class="fa fa-angle-down"></i></span>'
         );
       }
-    }
+    };
 
-    function animateArrowSubMenu() {
+    animateArrowSubMenu = () => {
       $(".mobile-nav-arrow").on("click tap touch", function() {
         $(this)
           .siblings(".sub-menu")
           .slideToggle("slow");
         $(this).toggleClass("rotate-arrow");
       });
-    }
+		};
 
-    function updateBodyTopPadding(){
-      $('body').css('padding-top', $header.height() );             
+		updateBodyTopPadding = () => {
+      $('body').css('padding-top', this.header.height() );
     }
   }
 })(jQuery, this);
