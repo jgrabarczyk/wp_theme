@@ -5,16 +5,16 @@
   class mainMenu {
     constructor() {
       (this.window = $(window)),
-			(this.header = $(".header.header")),
-			(this.menuWrapper = $(".main-nav")),
-			(this.menuBox = $("#menu-body")),
-			(this.menuBtn = $("#mobile-menu-handler"));
+      (this.header = $(".header.header")),
+      (this.menuWrapper = $(".main-nav")),
+      (this.menuBox = $("#menu-body")),
+      (this.menuBtn = $("#mobile-menu-handler"));
 
-			this.onWindowEvents();
-			this.onMouseClick();
-			this.onKeyboardClick();
-			this.handleSubMenu();
-			this.trackMenuActive();
+      this.onWindowEvents();
+      this.onMouseClick();
+      this.onKeyboardClick();
+      this.handleSubMenu();
+      this.trackMenuActive();
     }
 
     stickHeaderToTop() {
