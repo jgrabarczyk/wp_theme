@@ -1,3 +1,9 @@
+/* 
+ * At first had idea to get own animation module. 
+ * Later i started using AOS lib. 
+ * For now this has no use, but keep it for future.
+ */
+
 (function($, root, undefined) {
 	jQuery.fn.extend({
 		isInViewport: function() {
