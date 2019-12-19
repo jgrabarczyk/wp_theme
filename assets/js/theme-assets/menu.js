@@ -43,11 +43,13 @@
     };
 
     trackMenuActive = () => {
-      let $currentActiveEl = $(".current-menu-item");
-      this.updateBarActivePosition($currentActiveEl);
+			let $currentActiveEl = $(".wp-header-menu .current-menu-item");
+			if($currentActiveEl.length == 0) return;
 			
-      $(".wp-header-menu li").on("mouseenter", () => {
-        this.updateBarActivePosition($(this));
+      this.updateBarActivePosition($currentActiveEl);
+			let self = this ;
+      $(".wp-header-menu li").on("mouseenter", function() {
+        self.updateBarActivePosition($(this));
       });
 
       $(".wp-header-menu li").on("mouseleave", () => {
@@ -60,8 +62,10 @@
     };
 
     updateBarActivePosition = $el => {
+			if($el.length == 0) return
       let $activeBorder = $("#menu-body .active-border");
-      let top = this.header.hasClass("sticky")
+			
+			let top = this.header.hasClass("sticky")			
         ? 0
         : $el.position().top - $el.find("a").height();
       let css = {
