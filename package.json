@@ -4,13 +4,19 @@
   "description": "default",
   "main": "gulpfile.js",
   "dependencies": {
-    "gulp-cli": "^2.2.0",
-    "gulp": "^4.0.2",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
-    "gulp-autoprefixer": "^6.1.0",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^6.5.4",
-    "browser-sync": "^2.26.7"
+    "babel": "^6.23.0",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3"
