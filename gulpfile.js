@@ -1,8 +1,13 @@
-var gulp = require("gulp");
-var sass = require("gulp-sass");
-var sourcemaps = require("gulp-sourcemaps");
-var autoprefixer = require("gulp-autoprefixer");
-var browserSync = require("browser-sync").create();
+
+const babel = require('gulp-babel');
+const concat = require('gulp-concat'); 
+const minify = require("gulp-babel-minify");
+
+const gulp = require("gulp");
+const sass = require("gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
+const autoprefixer = require("gulp-autoprefixer");
+const browserSync = require("browser-sync").create();
 const AUTOPREFIXER_BROWSERS = [
   "last 2 version",
   "> 1%",
@@ -16,6 +21,28 @@ const AUTOPREFIXER_BROWSERS = [
   "android >= 4",
   "bb >= 10"
 ];
+gulp.task("babel", () =>
+  gulp
+    .src("assets/js/theme-assets/**/*.js")
+    .pipe(
+      babel({
+        presets: ["@babel/env"],
+        plugins: ["@babel/plugin-proposal-class-properties"]
+      })
+    )
+    .pipe(concat("assets/js/all.js"))
+    .pipe(sourcemaps.write("."))
+    .pipe(
+      minify({
+        mangle: {
+          keepClassName: true
+        }
+      })
+    )
+    .pipe(gulp.dest("./"))
+);
+// 
+
 gulp.task("default", function() {
   return gulp
     .src("scss/style.scss")
@@ -44,7 +71,7 @@ gulp.task("default", function() {
 gulp.task("watch", function() {
   browserSync.init({
     open: false,
-    proxy: "http://localhost/playground/",
+    proxy: "http://mixu-specialforces.pl/",
     reloadDelay: 500
   });
   gulp
@@ -52,4 +79,5 @@ gulp.task("watch", function() {
     .on("change", browserSync.reload);
   gulp.watch("**/*.php").on("change", browserSync.reload);
   gulp.watch("assets/js/**/*.js").on("change", browserSync.reload);
+  gulp.watch("assets/js/theme-assets/**/*.js", gulp.series('babel'));
 });
